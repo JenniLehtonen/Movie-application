@@ -3,24 +3,39 @@ import { createDrawerNavigator } from '@react-navigation/drawer';
 import { NavigationContainer } from '@react-navigation/native';
 
 import HomeScreen from './screens/HomeScreen';
-import SearchScreen from './screens/NotificationsScreen';
-import ProfileScreen from './screens/BirdScreen';
+import SearchScreen from './screens/SearchScreen';
+import ProfileScreen from './screens/ProfileScreen';
+import MylistScreen from './screens/MylistScreen';
+import CategoryScreen from './screens/CategoryScreen';
+const Drawer = createDrawerNavigator();
 
 export default function App() {
+  
   return (
-    <View style={styles.container}>
-      <Text>Open up App.js to start working on your app!</Text>
-      <Text>Open up App.js to start working on your app!</Text>
-      <StatusBar style="auto" />
-    </View>
+    <NavigationContainer>
+      <Drawer.Navigator initialRouteName="Moviefy">
+
+        <Drawer.Screen name="Home page">
+        {props => <HomeScreen {...props} extraData={"extra"} />}
+          </Drawer.Screen>
+
+        <Drawer.Screen name="Search movie">
+        {props => <SearchScreen {...props} extraData={"extra"} />}
+          </Drawer.Screen>
+
+          <Drawer.Screen name="Profile">
+        {props => <ProfileScreen {...props} extraData={"extra"} />}
+          </Drawer.Screen>
+
+          <Drawer.Screen name="My List">
+        {props => <MylistScreen {...props} extraData={"extra"} />}
+          </Drawer.Screen>
+
+          <Drawer.Screen name="Categories">
+        {props => <CategoryScreen {...props} extraData={"extra"} />}
+          </Drawer.Screen>
+
+      </Drawer.Navigator>
+    </NavigationContainer>
   );
 }
-
-const styles = StyleSheet.create({
-  container: {
-    flex: 1,
-    backgroundColor: '#fff',
-    alignItems: 'center',
-    justifyContent: 'center',
-  },
-});
