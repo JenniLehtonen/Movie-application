@@ -5,7 +5,7 @@ import { StyleSheet, Text, View } from 'react-native';
 export default function App() {
   return (
     <View style={styles.container}>
-      <Text>Open up Apg on your app!</Text>
+      <Text>Open up Appto start working on your app!</Text>
       <StatusBar style="auto" />
     </View>
   );
