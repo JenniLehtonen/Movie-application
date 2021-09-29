@@ -9,16 +9,5 @@ npm-debug.*
 *.orig.*
 web-build/
 
- 
-
-*
-!.gitignore
-!*.js
-!components/*
-!screens/*
-
- 
-
-
 # macOS
 .DS_Store
