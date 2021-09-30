@@ -8,7 +8,7 @@ const MoviewPreview = (props) => {
         <View style={styles.resultContainer}>
             <View style={styles.resultBox}>
                 <View style={styles.resultImageView}>
-                <Image source={require('../assets/testImg.jpeg')} style={styles.resultImage}/>
+                <Image source={props.image} style={styles.resultImage}/>
                 </View>
                 <View style={styles.resultTextView}>
                 <Text style={styles.resultTitle}>{props.name}</Text>

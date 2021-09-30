@@ -5,8 +5,8 @@ import MoviewPreview from '../components/MoviePreview';
 
 const SearchScreen = () => {
 
-  let testDataArray = [{name:"Transformers", language: "Eng", genre: "Sci-fi", duration: "2:40"}, {name:"Harry Potter", language: "Eng", genre:"Fiction", duration: "2:30"}, 
-  {name:"Die hard 2", language: "Eng", genre:"Action", duration: "2:10"}, {name:"Blancanieves", language: "Spa", genre:"Fairytale", duration: "2:25"}];
+  let testDataArray = [{name:"Transformers", language: "Eng", genre: "Sci-fi", duration: "2:40", image: require('../assets/testImg.jpg')}, {name:"Harry Potter", language: "Eng", genre:"Fiction", duration: "2:30", image: require('../assets/testImg.jpg')}, 
+  {name:"Die hard 2", language: "Eng", genre:"Action", duration: "2:10", image: require('../assets/testImg.jpg')}, {name:"Blancanieves", language: "Spa", genre:"Fairytale", duration: "2:25", image: require('../assets/testImg.jpg')}];
 
 
   return (
@@ -23,7 +23,7 @@ const SearchScreen = () => {
       {
         testDataArray.map((element) => {
           return(
-            <MoviewPreview name={element.name} language={element.language} genre={element.genre} duration={element.duration}/>
+            <MoviewPreview name={element.name} language={element.language} genre={element.genre} duration={element.duration} image={element.image}/>
           );
         })
       }  
