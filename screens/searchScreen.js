@@ -15,8 +15,14 @@ const SearchScreen = () => {
         </View>
       </View>  
       <View style={styles.resultContainer}>
-        <View>
-        <Text>result</Text>
+        <View style={styles.resultBox}>
+          <View style={styles.resultImageView}>
+            <Image source={require('../assets/testImg.jpeg')} style={styles.resultImage}/>
+          </View>
+          <View style={styles.resultTextView}>
+            <Text style={styles.resultTitle}>Transformers</Text>
+            <Text style={styles.resultDetails}>Eng | Fiction | 2:50</Text>
+          </View>
         </View>
       </View> 
     </View>
@@ -38,11 +44,10 @@ const styles = StyleSheet.create({
   },
   //Search field
   searchContainer: {
-    flex: 1,
     justifyContent: 'flex-start',
     padding: 20,
-    backgroundColor: '#1F1C2C',
-    width: '100%'
+    width: '100%',
+    height: 'auto'
   },
   searchFieldContainer: {
     flexDirection: 'row',
@@ -51,12 +56,14 @@ const styles = StyleSheet.create({
     height: 50,
   },
   searchField: {
-    backgroundColor: 'white',
     borderRadius: 25,
     height: 45,
     padding: 10,
-    width: '80%'
+    width: '80%',
+    backgroundColor: 'white',
+    fontSize: 18
   },
+
   //Search button
   buttonStyle: {
     marginLeft: 10,
@@ -71,7 +78,42 @@ const styles = StyleSheet.create({
     height: 30,
     width: 30
   },
+
+  //Results
   resultContainer: {
+    flex: 1,
+    justifyContent: 'flex-start',
+    padding: 20,
+    width: '100%'
+  },
+  resultBox: {
+    flexDirection: 'row',
+    borderRadius: 25,
+    backgroundColor: '#62606B',
+    padding: 10,
+    height: 100
+  },
+  resultTextView: {
+    width: '70%',
+    flexDirection: 'column',
+  },
+  resultImageView: {
+    width: '30%',
+    flexDirection: 'column',
+  },
+  resultTitle: {
+    fontSize: 20,
+    fontWeight: 'bold',
+    color: 'white'
+  },
+  resultDetails: {
+    fontSize: 18,
+    color: '#98979A'
+  },
+  resultImage: {
+    height: 80,
+    width: 80,
+    borderRadius: 20
   }
 });
 
