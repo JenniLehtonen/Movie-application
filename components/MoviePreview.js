@@ -5,7 +5,10 @@ import { useNavigation } from '@react-navigation/native';
 
 
 const MoviewPreview = (props) => {
+    
+    //For navigating to DetailScreen
     const navigation = useNavigation();
+
     return (
         
         <View style={styles.resultContainer}>
