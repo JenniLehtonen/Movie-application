@@ -1,7 +1,7 @@
 import * as React from 'react';
 import {View, Text, TextInput, TouchableOpacity, Image} from 'react-native';
 import styles from '../styles/SearchScreenStyle';
-import MoviewPreview from '../components/MoviePreview';
+import MoviePreview from '../components/MoviePreview';
 
 const SearchScreen = () => {
 
@@ -23,7 +23,7 @@ const SearchScreen = () => {
       {
         testDataArray.map((element) => {
           return(
-            <MoviewPreview name={element.name} language={element.language} genre={element.genre} duration={element.duration} image={element.image}/>
+            <MoviePreview name={element.name} language={element.language} genre={element.genre} duration={element.duration} image={element.image}/>
           );
         })
       }  
