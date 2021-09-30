@@ -2,18 +2,18 @@ import * as React from 'react';
 import { createDrawerNavigator } from '@react-navigation/drawer';
 import { NavigationContainer } from '@react-navigation/native';
 
-import HomeScreen from './screens/HomeScreen';
-import SearchScreen from './screens/SearchScreen';
-import ProfileScreen from './screens/ProfileScreen';
-import MylistScreen from './screens/MylistScreen';
-import CategoryScreen from './screens/CategoryScreen';
+import HomeScreen from './screens/homeScreen';
+import SearchScreen from './screens/searchScreen';
+import ProfileScreen from './screens/profileScreen';
+import MylistScreen from './screens/mylistScreen';
+import CategoryScreen from './screens/categoryScreen';
 const Drawer = createDrawerNavigator();
 
 export default function App() {
   
   return (
     <NavigationContainer>
-      <Drawer.Navigator initialRouteName="Moviefy">
+      <Drawer.Navigator initialRouteName="Home page">
 
         <Drawer.Screen name="Home page">
         {props => <HomeScreen {...props} extraData={"extra"} />}
