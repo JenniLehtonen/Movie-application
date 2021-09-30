@@ -5,7 +5,9 @@ import MoviewPreview from '../components/MoviePreview';
 
 const SearchScreen = () => {
 
-  let testArray = ["Transformers","Harry Potter","Die hard 2","Snow white"];
+  let testDataArray = [{name:"Transformers", language: "Eng", genre: "Sci-fi", duration: "2:40"}, {name:"Harry Potter", language: "Eng", genre:"Fiction", duration: "2:30"}, 
+  {name:"Die hard 2", language: "Eng", genre:"Action", duration: "2:10"}, {name:"Blancanieves", language: "Spa", genre:"Fairytale", duration: "2:25"}];
+
 
   return (
     <View style={styles.container}>
@@ -19,9 +21,9 @@ const SearchScreen = () => {
         </View>
       </View> 
       {
-        testArray.map((element) => {
+        testDataArray.map((element) => {
           return(
-            <MoviewPreview movie={element}/>
+            <MoviewPreview name={element.name} language={element.language} genre={element.genre} duration={element.duration}/>
           );
         })
       }  

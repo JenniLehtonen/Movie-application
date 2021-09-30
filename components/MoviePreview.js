@@ -11,8 +11,8 @@ const MoviewPreview = (props) => {
                 <Image source={require('../assets/testImg.jpeg')} style={styles.resultImage}/>
                 </View>
                 <View style={styles.resultTextView}>
-                <Text style={styles.resultTitle}>{props.movie}</Text>
-                <Text style={styles.resultDetails}>Eng | Fiction | 2:50</Text>
+                <Text style={styles.resultTitle}>{props.name}</Text>
+                <Text style={styles.resultDetails}>{props.language} | {props.genre} | {props.duration}</Text>
                 </View>
                 <View style={styles.resultButtonsView}>
                 <View style={styles.resultAddButtonView}>
