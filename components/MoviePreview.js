@@ -1,10 +1,13 @@
 import * as React from 'react';
 import {View, Text, TouchableOpacity, Image} from 'react-native';
 import styles from '../styles/SearchScreenStyle';
+import { useNavigation } from '@react-navigation/native';
+
 
 const MoviewPreview = (props) => {
-
+    const navigation = useNavigation();
     return (
+        
         <View style={styles.resultContainer}>
             <View style={styles.resultBox}>
                 <View style={styles.resultImageView}>
@@ -21,7 +24,8 @@ const MoviewPreview = (props) => {
                     </TouchableOpacity>
                 </View>
                 <View style={styles.resultInfoButtonView}>
-                    <TouchableOpacity style={styles.resultButtonStyle}>
+                    <TouchableOpacity style={styles.resultButtonStyle} 
+                    onPress={() => navigation.navigate('DetailScreen', {name:props.name, image:props.image, language:props.language, genre:props.genre, duration:props.duration})}>
                     <View style={{backgroundColor: 'white', height: 25, width: 25, borderRadius: 100, justifyContent: 'center', alignItems: 'center'}}>
                         <Image source={require('../assets/play.png')} style={styles.resultImageInfo}/>
                     </View>
