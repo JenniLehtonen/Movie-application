@@ -13,7 +13,7 @@ export default function App() {
   
   return (
     <NavigationContainer>
-      <Drawer.Navigator initialRouteName="Moviefy">
+      <Drawer.Navigator initialRouteName="Home page">
 
         <Drawer.Screen name="Home page">
         {props => <HomeScreen {...props} extraData={"extra"} />}
