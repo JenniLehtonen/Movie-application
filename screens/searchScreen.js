@@ -3,6 +3,8 @@ import {View, Text, TextInput, TouchableOpacity, Image, StyleSheet} from 'react-
 
 
 const SearchScreen = () => {
+
+  let testArray = ["Transformers","Harry Potter","Die hard","Snow white"];
   return (
     <View style={styles.container}>
       <View style={styles.searchContainer}>
@@ -13,18 +15,39 @@ const SearchScreen = () => {
             <Image source={require('../assets/magnifying-glass.png')} style={styles.image}/>
           </TouchableOpacity>
         </View>
-      </View>  
-      <View style={styles.resultContainer}>
-        <View style={styles.resultBox}>
-          <View style={styles.resultImageView}>
-            <Image source={require('../assets/testImg.jpeg')} style={styles.resultImage}/>
-          </View>
-          <View style={styles.resultTextView}>
-            <Text style={styles.resultTitle}>Transformers</Text>
-            <Text style={styles.resultDetails}>Eng | Fiction | 2:50</Text>
-          </View>
-        </View>
       </View> 
+      {
+        testArray.map((element) => {
+          return(
+          <View style={styles.resultContainer}>
+          <View style={styles.resultBox}>
+            <View style={styles.resultImageView}>
+              <Image source={require('../assets/testImg.jpeg')} style={styles.resultImage}/>
+            </View>
+            <View style={styles.resultTextView}>
+              <Text style={styles.resultTitle}>{element}</Text>
+              <Text style={styles.resultDetails}>Eng | Fiction | 2:50</Text>
+            </View>
+            <View style={styles.resultButtonsView}>
+              <View style={styles.resultAddButtonView}>
+                <TouchableOpacity style={styles.resultButtonStyle}>
+                  <Image source={require('../assets/ribbon.png')} style={styles.resultImageAdd}/>
+                </TouchableOpacity>
+              </View>
+              <View style={styles.resultInfoButtonView}>
+                <TouchableOpacity style={styles.resultButtonStyle}>
+                  <View style={{backgroundColor: 'white', height: 25, width: 25, borderRadius: 100, justifyContent: 'center', alignItems: 'center'}}>
+                    <Image source={require('../assets/play.png')} style={styles.resultImageInfo}/>
+                  </View>
+                </TouchableOpacity>
+              </View>
+            </View>
+          </View>
+        </View> 
+          );
+        })
+      } 
+      
     </View>
   );
 }
@@ -75,8 +98,8 @@ const styles = StyleSheet.create({
     alignItems: 'center',
   },
   image: {
-    height: 30,
-    width: 30
+    height: 25,
+    width: 25
   },
 
   //Results
@@ -84,6 +107,7 @@ const styles = StyleSheet.create({
     flex: 1,
     justifyContent: 'flex-start',
     padding: 20,
+    paddingTop: 0,
     width: '100%'
   },
   resultBox: {
@@ -94,12 +118,24 @@ const styles = StyleSheet.create({
     height: 100
   },
   resultTextView: {
-    width: '70%',
+    width: '60%',
     flexDirection: 'column',
+    paddingLeft: 10
   },
   resultImageView: {
-    width: '30%',
+    width: '25%',
+    flexDirection: 'column'
+  },
+  resultButtonsView: {
+    width: '15%',
     flexDirection: 'column',
+    alignItems: 'flex-end',
+  },
+  resultAddButtonView: {
+    marginBottom: 10
+  },
+  resultInfoButtonView: {
+    justifyContent: 'flex-end'
   },
   resultTitle: {
     fontSize: 20,
@@ -114,7 +150,23 @@ const styles = StyleSheet.create({
     height: 80,
     width: 80,
     borderRadius: 20
-  }
+  },
+  resultImageAdd: {
+    height: 20,
+    width: 20
+  },
+  resultImageInfo: {
+    height: 15,
+    width: 15
+  },
+  resultButtonStyle: {
+    backgroundColor: '#4C4956',
+    height: 35,
+    width: 35,
+    borderRadius: 100,
+    justifyContent: 'center',
+    alignItems: 'center'
+  },
 });
 
 export default SearchScreen;
