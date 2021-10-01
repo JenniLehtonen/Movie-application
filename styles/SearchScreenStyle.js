@@ -13,6 +13,7 @@ export default StyleSheet.create({
         fontSize: 25,
         margin: 20
       },
+      
       //Search field
       searchContainer: {
         justifyContent: 'flex-start',
