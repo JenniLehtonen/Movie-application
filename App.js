@@ -7,13 +7,25 @@ import SearchScreen from './screens/SearchScreen';
 import ProfileScreen from './screens/ProfileScreen';
 import MylistScreen from './screens/MylistScreen';
 import CategoryScreen from './screens/CategoryScreen';
+import RegisterScreen from './screens/RegisterScreen';
+import LoginScreen from './screens/LoginScreen';
+
 const Drawer = createDrawerNavigator();
 
 export default function App() {
   
+  
   return (
     <NavigationContainer>
-      <Drawer.Navigator initialRouteName="Moviefy">
+      <Drawer.Navigator initialRouteName="Register">
+
+      <Drawer.Screen name="Register">
+        {props => <RegisterScreen {...props} extraData={"extra"} />}
+          </Drawer.Screen>
+
+          <Drawer.Screen name="Login">
+        {props => <LoginScreen {...props} extraData={"extra"} />}
+          </Drawer.Screen>
 
         <Drawer.Screen name="Home page">
         {props => <HomeScreen {...props} extraData={"extra"} />}
