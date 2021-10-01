@@ -17,6 +17,7 @@ export default StyleSheet.create({
     //For go back and add to list buttons
     buttonView: {
       flexDirection: 'row',
+      marginTop: 30,
       marginBottom: 30
     },
     addButtonView: {

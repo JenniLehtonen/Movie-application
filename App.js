@@ -1,7 +1,6 @@
 import * as React from 'react';
 import { createDrawerNavigator } from '@react-navigation/drawer';
 import { NavigationContainer } from '@react-navigation/native';
-import { StyleSheet } from 'react-native';
 
 import HomeScreen from './screens/HomeScreen';
 import SearchScreen from './screens/SearchScreen';
@@ -9,6 +8,7 @@ import ProfileScreen from './screens/ProfileScreen';
 import MylistScreen from './screens/MylistScreen';
 import CategoryScreen from './screens/CategoryScreen';
 import DetailScreen from './screens/DetailScreen';
+
 const Drawer = createDrawerNavigator();
 
 export default function App() {
@@ -21,8 +21,8 @@ export default function App() {
         {props => <HomeScreen {...props} extraData={"extra"} />}
           </Drawer.Screen>
 
-        <Drawer.Screen name="Search movie">
-        {props => <SearchScreen {...props} extraData={"extra"} />}
+        <Drawer.Screen name="Search movie" options={{headerShown:false}}>
+        {props => <SearchScreen {...props} />}
           </Drawer.Screen>
 
           <Drawer.Screen name="Profile">
@@ -37,17 +37,11 @@ export default function App() {
         {props => <CategoryScreen {...props} extraData={"extra"} />}
           </Drawer.Screen>
 
-          <Drawer.Screen name="DetailScreen">
-        {props => <DetailScreen {...props} style={styles.hidden}/>}
+          <Drawer.Screen name="DetailScreen" options={{headerShown:false}}>
+        {props => <DetailScreen {...props} />}
           </Drawer.Screen>
 
       </Drawer.Navigator>
     </NavigationContainer>
   );
 }
-
-const styles = StyleSheet.create({
-  hidden: {
-    display: 'none'
-  }
-});
