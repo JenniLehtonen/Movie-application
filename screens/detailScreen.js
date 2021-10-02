@@ -14,6 +14,7 @@ const {image} = route.params;
 const {language} = route.params;
 const {genre} = route.params;
 const {duration} = route.params;
+const {description} = route.params;
   return(
     <View style={styles.container}>
       <View style={styles.buttonView}>
@@ -35,8 +36,7 @@ const {duration} = route.params;
         <View style={styles.borderstyle}></View>
         <View>
           <Text style={styles.titleStyle2}>Story line</Text>
-          <Text style={styles.detailsStyle}>An ancient struggle between two Cybertronian races, the heroic Autobots and the evil Decepticons, comes to Earth, 
-            with a clue to the ultimate power held by a teenager.</Text>
+          <Text style={styles.detailsStyle}>{description}</Text>
           <Text style={styles.titleStyle2}>Star cast</Text>
         </View>
       </View>

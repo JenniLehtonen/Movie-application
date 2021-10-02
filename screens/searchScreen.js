@@ -4,40 +4,56 @@ import styles from '../styles/SearchScreenStyle';
 import MoviePreview from '../components/MoviePreview';
 
 const SearchScreen = () => {
+
+  let keyValue = 1;
   const [search, setSearch] = useState("");
   const [result, setResult] = useState({});
-  const url = `https://api.themoviedb.org/3/search/movie?api_key=        &language=en-US&query=jumanji&page=1&include_adult=false`;
+  const [searchUrl, setSearchUrl] = useState();
+  const [searchResultArray, setSearchResultArray] = useState({});
 
   //For handling text input
   const textInputHandler = (enteredText) => {
     setSearch(enteredText);
+    setSearchUrl("https://api.themoviedb.org/3/search/movie?api_key=&language=en-US&query="+search+"&page=1&include_adult=false")
   }
 
   //Search movies from API
-  // const searchMovies = async () => {
-  //   //const url = `https://api.themoviedb.org/3/movie/550?api_key=`;
-  //   let response = await fetch(
-  //     'https://api.themoviedb.org/3/movie/550?api_key='
-  //   );
-  //   let json = await response.json();
-  //   console.log(json);
-  // }
+  const searchMovies = () => {
+    console.log("moii");
+    // let response = await fetch(
+    //   'https://api.themoviedb.org/3/search/movie?api_key= &language=en-US&query=jumanji&page=1&include_adult=false'
+    // );
+    // let json = await response.json();
+    // setResult(json);
+    // console.log(result);
+
+    for (let i = 0; i < result.length; i++ ){
+      setSearchResultArray(searchResultArray.push({name:result.results[i].title, language: result.results[i].original_language, 
+        genre: result.results[i].genre_ids, duration: "2:30", image: result.results[i].poster_path, description: result.results[i].overview}));
+  }
+  console.log("ARRAY: " + searchResultArray);
+}
+  
 
    useEffect(() => { 
-     fetch(url)
+     fetch(searchUrl)
      .then((res) => res.json())
      .then((data) => setResult(data));
-   }, [url]);
-   console.log(result);
-   console.log("OVERVIEW: " + result.results[0].overview);
-   console.log("GENRE: " + result.results[0].genre_ids);
-   console.log("TITLE: " + result.results[0].title);
-   console.log("LANGUAGE: " + result.results[0].original_language);
-   console.log("RELEASE DATE: " + result.results[0].release_date);
-   console.log("POSTER: " + result.results[0].poster_path);
+   }, [searchUrl]);
+
+    console.log(result);
+  //  console.log("OVERVIEW: " + result.results[0].overview);
+  //  console.log("GENRE: " + result.results[0].genre_ids);
+  //  console.log("TITLE: " + result.results[0].title);
+  //  console.log("LANGUAGE: " + result.results[0].original_language);
+  //  console.log("RELEASE DATE: " + result.results[0].release_date);
+  //  console.log("POSTER: " + result.results[0].poster_path);
   
-  let testDataArray = [{name:"Transformers", language: "Eng", genre: "Sci-fi", duration: "2:40", image: require('../assets/testImg.jpg')}, {name:"Harry Potter", language: "Eng", genre:"Fiction", duration: "2:30", image: require('../assets/testImg.jpg')}, 
-  {name:"Die hard 2", language: "Eng", genre:"Action", duration: "2:10", image: require('../assets/testImg.jpg')}, {name:"Blancanieves", language: "Spa", genre:"Fairytale", duration: "2:25", image: require('../assets/testImg.jpg')}];
+  let testDataArray = [
+    {name:"Transformers", language: "Eng", genre: "Sci-fi", duration: "2:40", image: require('../assets/testImg.jpg'), description:"This is a description of the awesome movie. I'm sure you'll want to watch it!"}, 
+    {name:"Harry Potter", language: "Eng", genre:"Fiction", duration: "2:30", image: require('../assets/testImg.jpg'), description:"This is a description of the awesome movie. I'm sure you'll want to watch it!"}, 
+    {name:"Die hard 2", language: "Eng", genre:"Action", duration: "2:10", image: require('../assets/testImg.jpg'), description:"This is a description of the awesome movie. I'm sure you'll want to watch it!"}, 
+    {name:"Blancanieves", language: "Spa", genre:"Fairytale", duration: "2:25", image: require('../assets/testImg.jpg'), description:"This is a description of the awesome movie. I'm sure you'll want to watch it!"}];
 
 
   return (
@@ -54,7 +70,7 @@ const SearchScreen = () => {
       {
         testDataArray.map((element) => {
           return(
-            <MoviePreview name={element.name} language={element.language} genre={element.genre} duration={element.duration} image={element.image}/>
+            <MoviePreview key={keyValue++} name={element.name} language={element.language} genre={element.genre} duration={element.duration} image={element.image} description={element.description}/>
           );
         })
       }  

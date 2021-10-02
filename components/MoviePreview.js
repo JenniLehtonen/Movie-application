@@ -28,7 +28,7 @@ const MoviewPreview = (props) => {
                 </View>
                 <View style={styles.resultInfoButtonView}>
                     <TouchableOpacity style={styles.resultButtonStyle} 
-                    onPress={() => navigation.navigate('DetailScreen', {name:props.name, image:props.image, language:props.language, genre:props.genre, duration:props.duration})}>
+                    onPress={() => navigation.navigate('DetailScreen', {name:props.name, image:props.image, language:props.language, genre:props.genre, duration:props.duration, description: props.description})}>
                     <View style={{backgroundColor: 'white', height: 25, width: 25, borderRadius: 100, justifyContent: 'center', alignItems: 'center'}}>
                         <Image source={require('../assets/play.png')} style={styles.resultImageInfo}/>
                     </View>
