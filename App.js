@@ -7,6 +7,8 @@ import SearchScreen from './screens/SearchScreen';
 import ProfileScreen from './screens/ProfileScreen';
 import MylistScreen from './screens/MylistScreen';
 import CategoryScreen from './screens/CategoryScreen';
+import DetailScreen from './screens/DetailScreen';
+
 const Drawer = createDrawerNavigator();
 
 export default function App() {
@@ -19,8 +21,8 @@ export default function App() {
         {props => <HomeScreen {...props} extraData={"extra"} />}
           </Drawer.Screen>
 
-        <Drawer.Screen name="Search movie">
-        {props => <SearchScreen {...props} extraData={"extra"} />}
+        <Drawer.Screen name="Search movie" options={{headerShown:false}}>
+        {props => <SearchScreen {...props} />}
           </Drawer.Screen>
 
           <Drawer.Screen name="Profile">
@@ -33,6 +35,10 @@ export default function App() {
 
           <Drawer.Screen name="Categories">
         {props => <CategoryScreen {...props} extraData={"extra"} />}
+          </Drawer.Screen>
+
+          <Drawer.Screen name="DetailScreen" options={{headerShown:false}}>
+        {props => <DetailScreen {...props} />}
           </Drawer.Screen>
 
       </Drawer.Navigator>
