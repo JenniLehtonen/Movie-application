@@ -6,20 +6,29 @@ import MoviePreview from '../components/MoviePreview';
 const SearchScreen = () => {
 
   let keyValue = 1;
-  const [search, setSearch] = useState("https://api.themoviedb.org");
+
+  //API search result
   const [result, setResult] = useState();
-  const [searchUrl, setSearchUrl] = useState();
-  const [loaded, setLoaded] = useState(false);
+
+  //For holding the API search URL with the user search input
+  const [searchUrl, setSearchUrl] = useState("https://api.themoviedb.org");
+
+  //For showing the movies if the user has clicked search button
+  const [showMovies, setShowMovies] = useState(false);
 
   //For handling text input
   const textInputHandler = (enteredText) => {
-    setSearch(enteredText);
-    setSearchUrl("https://api.themoviedb.org/3/search/movie?api_key=&language=en-US&query="+search+"&page=1&include_adult=false")
+
+    //Hide the search results
+    setShowMovies(false); 
+
+    //Set the search URL with the user's search input
+    setSearchUrl("https://api.themoviedb.org/3/search/movie?api_key=&language=en-US&query="+enteredText+"&page=1&include_adult=false")
   }
 
   //Search movies from API
   const searchMovies = () => {
-    setLoaded(true);
+    setShowMovies(true);
     console.log("moii");
     console.log(result);
     // let response = await fetch(
@@ -37,6 +46,7 @@ const SearchScreen = () => {
   // }
 
    useEffect(() => { 
+     //Fetch movies from the API and save them to state
      fetch(searchUrl)
      .then((res) => res.json())
      .then((data) => {console.log(data); setResult(
@@ -73,13 +83,13 @@ const SearchScreen = () => {
           </TouchableOpacity>
         </View>
       </View> 
-      {/* { loaded==true ?
+      {/* { showMovies==true ?
         result.map((element) => { */}
           {/* return( //TÄHÄN RESULT.RESULTS[0].TITLE JNE. */}
-          { loaded == true?
-              <MoviePreview key={keyValue++} name={result.title} language={result.language} releaseDate={result.releaseDate} duration={"2:14"} image={{uri: 'https://image.tmdb.org/t/p/original/' + result.poster}} description={result.overview}/>
+          { showMovies == true?
+              <MoviePreview key={keyValue++} name={result.name} language={result.language} releaseDate={result.releaseDate} duration={"2:14"} image={{uri: 'https://image.tmdb.org/t/p/original/' + result.poster}} description={result.overview}/>
          :
-         <Text>Search a movie</Text>
+          <Text style={styles.searchStyle}>Search a movie...</Text>
         }
             
           {/* );

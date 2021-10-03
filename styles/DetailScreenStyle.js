@@ -13,6 +13,9 @@ export default StyleSheet.create({
       marginBottom: 30,
       width: '80%'
     },
+    attributionContainer: {
+      marginTop: 'auto'
+    },
     
     //For go back and add to list buttons
     buttonView: {
@@ -30,7 +33,7 @@ export default StyleSheet.create({
 
     //For aligning the information of the movie
     textContentStyle: {
-      alignItems: 'center',
+      alignItems: 'center'
     },
   
     //Image styles

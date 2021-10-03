@@ -13,6 +13,11 @@ export default StyleSheet.create({
         fontSize: 25,
         margin: 20
       },
+      searchStyle: {
+        marginBottom: 10,
+        fontSize: 18,
+        color: '#98979A',
+      },
       
       //Search field
       searchContainer: {
@@ -25,7 +30,7 @@ export default StyleSheet.create({
         flexDirection: 'row',
         justifyContent: 'flex-start',
         alignItems: 'center',
-        height: 50,
+        height: 50
       },
       searchField: {
         borderRadius: 25,
