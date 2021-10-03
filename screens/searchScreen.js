@@ -27,20 +27,23 @@ const SearchScreen = () => {
     // );
     // let json = await response.json();
     // setResult(json);
-    // console.log(result);
-
-  //   for (let i = 0; i < result.length; i++ ){
-  //     setSearchResultArray(searchResultArray.push({name:result.results[i].title, language: result.results[i].original_language, 
-  //       genre: result.results[i].genre_ids, duration: "2:30", image: result.results[i].poster_path, description: result.results[i].overview}));
-  // }
- 
 }
-  
+
+  // const setMovies = (data) => {
+  //   for (let i = 0; i<data.length; i++){
+  //     setResult(result => [...result,{overview: data.results[i].overview, genre: data.results[i].genre_ids, name: data.results[i].title, 
+  //       language: data.results[i].original_language, releaseDate: data.results[i].release_date, poster: data.results[i].poster_path}]);
+  //   }
+  // }
 
    useEffect(() => { 
      fetch(searchUrl)
      .then((res) => res.json())
-     .then((data) => setResult({overview: data.results[0].overview, genre: data.results[0].genre_ids, name: data.results[0].title, language: data.results[0].original_language, releaseDate: data.results[0].release_date, poster: data.results[0].poster_path}));
+     .then((data) => {console.log(data); setResult(
+       {overview: data.results[0].overview, genre: data.results[0].genre_ids, name: data.results[0].title, 
+        language: data.results[0].original_language, releaseDate: data.results[0].release_date, poster: data.results[0].poster_path}
+        )});
+    // .then((data) => setMovies(data));
    }, [searchUrl]);
 
     console.log(result);
@@ -74,7 +77,7 @@ const SearchScreen = () => {
         result.map((element) => { */}
           {/* return( //TÄHÄN RESULT.RESULTS[0].TITLE JNE. */}
           { loaded == true?
-              <MoviePreview key={keyValue++} name={result.title} language={result.language} genre={result.genre} duration={"2:14"} image={require('../assets/testImg.jpg')} description={result.overview}/>
+              <MoviePreview key={keyValue++} name={result.title} language={result.language} releaseDate={result.releaseDate} duration={"2:14"} image={{uri: 'https://image.tmdb.org/t/p/original/' + result.poster}} description={result.overview}/>
          :
          <Text>Search a movie</Text>
         }
