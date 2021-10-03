@@ -6,10 +6,10 @@ import MoviePreview from '../components/MoviePreview';
 const SearchScreen = () => {
 
   let keyValue = 1;
-  const [search, setSearch] = useState("");
-  const [result, setResult] = useState({});
+  const [search, setSearch] = useState("https://api.themoviedb.org");
+  const [result, setResult] = useState();
   const [searchUrl, setSearchUrl] = useState();
-  const [searchResultArray, setSearchResultArray] = useState({});
+  const [loaded, setLoaded] = useState(false);
 
   //For handling text input
   const textInputHandler = (enteredText) => {
@@ -19,7 +19,9 @@ const SearchScreen = () => {
 
   //Search movies from API
   const searchMovies = () => {
+    setLoaded(true);
     console.log("moii");
+    console.log(result);
     // let response = await fetch(
     //   'https://api.themoviedb.org/3/search/movie?api_key= &language=en-US&query=jumanji&page=1&include_adult=false'
     // );
@@ -27,21 +29,22 @@ const SearchScreen = () => {
     // setResult(json);
     // console.log(result);
 
-    for (let i = 0; i < result.length; i++ ){
-      setSearchResultArray(searchResultArray.push({name:result.results[i].title, language: result.results[i].original_language, 
-        genre: result.results[i].genre_ids, duration: "2:30", image: result.results[i].poster_path, description: result.results[i].overview}));
-  }
-  console.log("ARRAY: " + searchResultArray);
+  //   for (let i = 0; i < result.length; i++ ){
+  //     setSearchResultArray(searchResultArray.push({name:result.results[i].title, language: result.results[i].original_language, 
+  //       genre: result.results[i].genre_ids, duration: "2:30", image: result.results[i].poster_path, description: result.results[i].overview}));
+  // }
+ 
 }
   
 
    useEffect(() => { 
      fetch(searchUrl)
      .then((res) => res.json())
-     .then((data) => setResult(data));
+     .then((data) => setResult({overview: data.results[0].overview, genre: data.results[0].genre_ids, name: data.results[0].title, language: data.results[0].original_language, releaseDate: data.results[0].release_date, poster: data.results[0].poster_path}));
    }, [searchUrl]);
 
     console.log(result);
+    
   //  console.log("OVERVIEW: " + result.results[0].overview);
   //  console.log("GENRE: " + result.results[0].genre_ids);
   //  console.log("TITLE: " + result.results[0].title);
@@ -62,18 +65,27 @@ const SearchScreen = () => {
         <Text style={styles.textStyle}>Search</Text>
         <View style={styles.searchFieldContainer}>
           <TextInput style={styles.searchField} placeholderTextColor="black" placeholder="Search a movie" onChangeText={input => textInputHandler(input)}/>
-          <TouchableOpacity style={styles.buttonStyle} onPress={() => searchMovies}>
+          <TouchableOpacity style={styles.buttonStyle} onPress={searchMovies}>
             <Image source={require('../assets/magnifying-glass.png')} style={styles.image}/>
           </TouchableOpacity>
         </View>
       </View> 
-      {
-        testDataArray.map((element) => {
-          return(
-            <MoviePreview key={keyValue++} name={element.name} language={element.language} genre={element.genre} duration={element.duration} image={element.image} description={element.description}/>
-          );
+      {/* { loaded==true ?
+        result.map((element) => { */}
+          {/* return( //TÄHÄN RESULT.RESULTS[0].TITLE JNE. */}
+          { loaded == true?
+              <MoviePreview key={keyValue++} name={result.title} language={result.language} genre={result.genre} duration={"2:14"} image={require('../assets/testImg.jpg')} description={result.overview}/>
+         :
+         <Text>Search a movie</Text>
+        }
+            
+          {/* );
         })
-      }  
+        :
+        <Text>Search a movie</Text>
+       
+        
+      }   */}
     </View>
   );
 }
