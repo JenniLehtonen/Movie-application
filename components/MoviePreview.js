@@ -1,9 +1,26 @@
-import * as React from 'react';
+//import * as React from 'react';
+import React, { useState, useEffect } from "react";
 import {View, Text, TouchableOpacity, Image} from 'react-native';
 import styles from '../styles/SearchScreenStyle';
 
 const MoviewPreview = (props) => {
+    const [movieList, setMovieList] = useState([]);
 
+    async function addToMylist() {
+        const response = await fetch("http://10.0.2.2:3000/api/persons",
+        {
+          method:'POST',
+          headers:{
+            'Content-Type':'application/json'
+          },
+          body:JSON.stringify({name:props.name, language:props.language, genre:props.genre, duration:props.duration})
+        });
+      
+    const responseData = await response.json();
+    console.log(responseData);
+    setMovieList(movieList=>[...movieList, responseData]);
+      }
+    
     return (
         <View style={styles.resultContainer}>
             <View style={styles.resultBox}>
@@ -16,7 +33,7 @@ const MoviewPreview = (props) => {
                 </View>
                 <View style={styles.resultButtonsView}>
                 <View style={styles.resultAddButtonView}>
-                    <TouchableOpacity style={styles.resultButtonStyle}>
+                    <TouchableOpacity style={styles.resultButtonStyle} onPress={addToMylist}>
                     <Image source={require('../assets/ribbon.png')} style={styles.resultImageAdd}/>
                     </TouchableOpacity>
                 </View>
