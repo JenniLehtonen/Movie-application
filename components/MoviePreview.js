@@ -4,7 +4,7 @@ import styles from '../styles/SearchScreenStyle';
 import { useNavigation } from '@react-navigation/native';
 
 
-const MoviewPreview = (props) => {
+const MoviePreview = (props) => {
     
     //For navigating to DetailScreen
     const navigation = useNavigation();
@@ -46,4 +46,4 @@ const MoviewPreview = (props) => {
     );
 }
 
-export default MoviewPreview;
+export default MoviePreview;

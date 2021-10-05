@@ -8,6 +8,7 @@ import ProfileScreen from './screens/ProfileScreen';
 import MylistScreen from './screens/MylistScreen';
 import CategoryScreen from './screens/CategoryScreen';
 import DetailScreen from './screens/DetailScreen';
+import MoviesByCategoryScreen from './screens/MoviesByCategoryScreen';
 
 const Drawer = createDrawerNavigator();
 
@@ -39,6 +40,10 @@ export default function App() {
 
           <Drawer.Screen name="DetailScreen" options={{headerShown:false}}>
         {props => <DetailScreen {...props} />}
+          </Drawer.Screen>
+
+          <Drawer.Screen name="MoviesByCategoryScreen" >
+        {props => <MoviesByCategoryScreen {...props} />}
           </Drawer.Screen>
 
       </Drawer.Navigator>
