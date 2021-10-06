@@ -1,9 +1,14 @@
-import React, { useState } from 'react';
+import React, { useState, useContext } from 'react';
 import { View, Text, StyleSheet, TextInput, TouchableOpacity, Alert } from 'react-native';
+
+import AppContext from '../components/AppContext';
 
 export default function RegisterScreen(props) {
     const [newUser, setNewUser] = useState('');
     const [newPassword, setNewPassword] = useState('');
+
+    const myContext = useContext(AppContext);
+
 
     const nameInputHandler = (enteredText) => {
         setNewUser(enteredText);

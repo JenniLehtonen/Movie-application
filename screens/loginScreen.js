@@ -1,9 +1,14 @@
-import React, { useState } from 'react';
-import { View, Button, Text, StyleSheet, TextInput, TouchableOpacity, Alert } from 'react-native';
+import React, { useState, useContext } from 'react';
+import { View, Text, StyleSheet, TextInput, TouchableOpacity, Alert } from 'react-native';
+
+import AppContext from '../components/AppContext';
 
 export default function LoginScreen(props) {
     const [newUser, setNewUser] = useState('');
     const [newPassword, setNewPassword] = useState('');
+
+    const myContext = useContext(AppContext);
+
 
     const nameInputHandler = (enteredText) => {
         setNewUser(enteredText);
@@ -30,6 +35,10 @@ export default function LoginScreen(props) {
         }
     }
 
+    const updateLogin=()=> {
+        myContext.login();
+    }
+
     async function loginUser() {
 
         const response = await fetch("http://10.0.2.2:8080/rest/userservice/loginjsonuser",
@@ -51,6 +60,8 @@ export default function LoginScreen(props) {
                     { text: "OK" }
                 ]
             );
+            updateLogin();
+            props.navigation.navigate("Home page");
         } else {
             Alert.alert(
                 "Failure",
@@ -96,6 +107,7 @@ export default function LoginScreen(props) {
 const styles = StyleSheet.create({
     screen: {
         padding: 20,
+        paddingTop:50,
         backgroundColor: '#1F1C2C',
         height: '100%',
     },
