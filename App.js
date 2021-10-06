@@ -13,7 +13,7 @@ import RegisterScreen from './screens/RegisterScreen';
 import MiddleScreen from './screens/MiddleScreen';
 import LoginScreen from './screens/LoginScreen';
 import LogoutScreen from './screens/LogoutScreen';
-
+import DetailScreen from './screens/DetailScreen';
 
 const Drawer = createDrawerNavigator();
 
@@ -26,7 +26,7 @@ export default function App() {
     setIsLoggedIn(true);
   }
   const logout = () => {
-    setIsLoggedIn(false);  
+    setIsLoggedIn(false);
   }
 
   const userSettings = {
@@ -47,8 +47,8 @@ export default function App() {
               {props => <HomeScreen {...props} extraData={"extra"} />}
             </Drawer.Screen>
 
-            <Drawer.Screen name="Search movie">
-              {props => <SearchScreen {...props} extraData={"extra"} />}
+            <Drawer.Screen name="Search movie" options={{ headerShown: false }}>
+              {props => <SearchScreen {...props} />}
             </Drawer.Screen>
 
             <Drawer.Screen name="Profile">
@@ -61,6 +61,10 @@ export default function App() {
 
             <Drawer.Screen name="Categories">
               {props => <CategoryScreen {...props} extraData={"extra"} />}
+            </Drawer.Screen>
+
+            <Drawer.Screen name="DetailScreen" options={{ headerShown: false }}>
+              {props => <DetailScreen {...props} />}
             </Drawer.Screen>
 
             <Drawer.Screen name="Logout">
@@ -77,7 +81,7 @@ export default function App() {
 
     );
   } else {
-    
+
 
     return (
       <AppContext.Provider value={userSettings}>
@@ -105,4 +109,3 @@ export default function App() {
     )
   }
 }
-
