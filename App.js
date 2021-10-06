@@ -10,6 +10,7 @@ import ProfileScreen from './screens/ProfileScreen';
 import MylistScreen from './screens/MylistScreen';
 import CategoryScreen from './screens/CategoryScreen';
 import RegisterScreen from './screens/RegisterScreen';
+import MiddleScreen from './screens/MiddleScreen';
 import LoginScreen from './screens/LoginScreen';
 import LogoutScreen from './screens/LogoutScreen';
 
@@ -19,18 +20,19 @@ const Drawer = createDrawerNavigator();
 
 export default function App() {
   const [isLoggedIn, setIsLoggedIn] = useState(false);
+  const [name, setName] = useState('');
 
   const login = () => {
     setIsLoggedIn(true);
   }
   const logout = () => {
-    setIsLoggedIn(false);
-    navigation.navigate("Login");
-
+    setIsLoggedIn(false);  
   }
 
   const userSettings = {
     isLoggedIn,
+    name,
+    setName,
     login,
     logout,
   };
@@ -65,22 +67,24 @@ export default function App() {
               {props => <LogoutScreen {...props} extraData={"extra"} />}
             </Drawer.Screen>
 
+            <Drawer.Screen name=" " >
+              {props => <MiddleScreen {...props} extraData={"extra"} />}
+            </Drawer.Screen>
+
           </Drawer.Navigator>
         </NavigationContainer>
       </AppContext.Provider>
 
     );
   } else {
+    
+
     return (
       <AppContext.Provider value={userSettings}>
 
         <NavigationContainer>
 
           <Drawer.Navigator initialRouteName="Login">
-
-            <Drawer.Screen name="Home page">
-              {props => <HomeScreen {...props} />}
-            </Drawer.Screen>
 
             <Drawer.Screen name="Register" options={{ headerShown: false }}>
               {props => <RegisterScreen {...props} />}
@@ -90,6 +94,10 @@ export default function App() {
               {props => <LoginScreen {...props} />}
             </Drawer.Screen>
 
+            <Drawer.Screen name=" " options={{ headerShown: false }}>
+              {props => <MiddleScreen {...props} />}
+            </Drawer.Screen>
+
           </Drawer.Navigator>
         </NavigationContainer>
       </AppContext.Provider>
@@ -97,3 +105,4 @@ export default function App() {
     )
   }
 }
+

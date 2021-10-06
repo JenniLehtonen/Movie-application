@@ -6,11 +6,16 @@ import AppContext from '../components/AppContext';
 export default function LogoutScreen(props) {
     const myContext = useContext(AppContext);
 
+    const logout=()=>{
+        myContext.logout();
+        props.navigation.navigate(" ");
+    }
+
     return (
 
         <View style={styles.screen}>
             <View style={styles.screen2}>
-                <TouchableOpacity activeOpacity={0.8} style={styles.button} onPress={myContext.logout}>
+                <TouchableOpacity activeOpacity={0.8} style={styles.button} onPress={logout}>
                     <Text style={styles.buttonText}>Log out</Text>
                 </TouchableOpacity>
             </View>

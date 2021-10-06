@@ -102,6 +102,7 @@ export default function RegisterScreen(props) {
 const styles = StyleSheet.create({
     screen: {
         padding: 20,
+        paddingTop:50,
         backgroundColor: '#1F1C2C',
         height: '100%',
     },

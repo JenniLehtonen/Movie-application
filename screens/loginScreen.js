@@ -61,7 +61,8 @@ export default function LoginScreen(props) {
                 ]
             );
             updateLogin();
-            props.navigation.navigate("Home page");
+            myContext.setName(newUser);
+            props.navigation.navigate(" ");
         } else {
             Alert.alert(
                 "Failure",
