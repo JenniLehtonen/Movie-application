@@ -75,22 +75,15 @@ const MylistScreen = () => {
             
             renderItem={({item}) => (
               <View style={styles.resultBox}>
-                
+                <View style={styles.resultImageView}>
+                <Image source={item.image.url} style={styles.resultImage}/>
+                </View>
               <View style={styles.resultTextView}>
                  <Text style={styles.resultTitle}>{item.name}</Text>
                 <Text style={styles.resultDetails}> {item.name} | {item.language} | {item.genre} | {item.duration}</Text>
                 <View style={styles.resultButtonsView}>
                 <View style={styles.resultAddButtonView}>
-                <TouchableOpacity style={styles.resultButtonStyle}>
-                    <Image source={require('../assets/ribbon.png')} style={styles.resultImageAdd}/>
-                    </TouchableOpacity>
-                  </View>
-                  <View style={styles.resultInfoButtonView}>
-                    <TouchableOpacity style={styles.resultButtonStyle}>
-                    <View style={{backgroundColor: 'white', height: 25, width: 25, borderRadius: 100, justifyContent: 'center', alignItems: 'center'}}>
-                        <Image source={require('../assets/play.png')} style={styles.resultImageInfo}/>
-                    </View>
-                </TouchableOpacity>
+                
                 </View>
 
                 </View>
