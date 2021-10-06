@@ -1,10 +1,11 @@
 import { StyleSheet } from 'react-native';
 
 export default StyleSheet.create({
-    container: {
-        height: '100%',
+      container: {
+        flex: 1,
         backgroundColor: '#1F1C2C',
-        padding: 20
+        padding: 20,
+        alignItems: 'center'
       },
       textStyle: {
         color: 'white',
@@ -12,12 +13,12 @@ export default StyleSheet.create({
         fontSize: 25,
         margin: 20
       },
-      resultTitle: {
+      categoryTitle: {
         fontSize: 18,
         fontWeight: 'bold',
         color: 'white'
       },
-      resultBox: {
+      categoryBox: {
         flexDirection: 'row',
         borderRadius: 25,
         backgroundColor: '#62606B',
@@ -28,7 +29,7 @@ export default StyleSheet.create({
         width: 200,
         marginTop: 10
       },
-      resultButtonStyle: {
+      categoryButtonStyle: {
         backgroundColor: '#4C4956',
         height: 35,
         width: 35,
@@ -37,8 +38,14 @@ export default StyleSheet.create({
         alignItems: 'center',
         marginLeft: 10
       },
-      resultImageInfo: {
+      categoryImageButton: {
         height: 15,
         width: 15
+      },
+      movieContainer: {
+        justifyContent: 'flex-start',
+        padding: 20,
+        width: '100%',
+        height: 'auto'
       },
 })

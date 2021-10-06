@@ -31,11 +31,6 @@ const SearchScreen = () => {
     setShowMovies(true);
     console.log("moii");
     console.log(result);
-    // let response = await fetch(
-    //   'https://api.themoviedb.org/3/search/movie?api_key= &language=en-US&query=jumanji&page=1&include_adult=false'
-    // );
-    // let json = await response.json();
-    // setResult(json);
 }
 
   // const setMovies = (data) => {
@@ -65,11 +60,11 @@ const SearchScreen = () => {
   //  console.log("RELEASE DATE: " + result.results[0].release_date);
   //  console.log("POSTER: " + result.results[0].poster_path);
   
-  let testDataArray = [
-    {name:"Transformers", language: "Eng", genre: "Sci-fi", duration: "2:40", image: require('../assets/testImg.jpg'), description:"This is a description of the awesome movie. I'm sure you'll want to watch it!"}, 
-    {name:"Harry Potter", language: "Eng", genre:"Fiction", duration: "2:30", image: require('../assets/testImg.jpg'), description:"This is a description of the awesome movie. I'm sure you'll want to watch it!"}, 
-    {name:"Die hard 2", language: "Eng", genre:"Action", duration: "2:10", image: require('../assets/testImg.jpg'), description:"This is a description of the awesome movie. I'm sure you'll want to watch it!"}, 
-    {name:"Blancanieves", language: "Spa", genre:"Fairytale", duration: "2:25", image: require('../assets/testImg.jpg'), description:"This is a description of the awesome movie. I'm sure you'll want to watch it!"}];
+  // let testDataArray = [
+  //   {name:"Transformers", language: "Eng", genre: "Sci-fi", duration: "2:40", image: require('../assets/testImg.jpg'), description:"This is a description of the awesome movie. I'm sure you'll want to watch it!"}, 
+  //   {name:"Harry Potter", language: "Eng", genre:"Fiction", duration: "2:30", image: require('../assets/testImg.jpg'), description:"This is a description of the awesome movie. I'm sure you'll want to watch it!"}, 
+  //   {name:"Die hard 2", language: "Eng", genre:"Action", duration: "2:10", image: require('../assets/testImg.jpg'), description:"This is a description of the awesome movie. I'm sure you'll want to watch it!"}, 
+  //   {name:"Blancanieves", language: "Spa", genre:"Fairytale", duration: "2:25", image: require('../assets/testImg.jpg'), description:"This is a description of the awesome movie. I'm sure you'll want to watch it!"}];
 
 
   return (

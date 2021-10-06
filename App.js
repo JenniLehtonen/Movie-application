@@ -42,7 +42,7 @@ export default function App() {
         {props => <DetailScreen {...props} />}
           </Drawer.Screen>
 
-          <Drawer.Screen name="MoviesByCategoryScreen" >
+          <Drawer.Screen name="MoviesByCategoryScreen" options={{headerShown:false}}>
         {props => <MoviesByCategoryScreen {...props} />}
           </Drawer.Screen>
 
