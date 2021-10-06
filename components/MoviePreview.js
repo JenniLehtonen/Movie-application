@@ -1,10 +1,14 @@
-import * as React from 'react';
+//import * as React from 'react';
+import React, { useState, useEffect } from "react";
 import {View, Text, TouchableOpacity, Image} from 'react-native';
 import styles from '../styles/SearchScreenStyle';
 import { useNavigation } from '@react-navigation/native';
 
 
 const MoviewPreview = (props) => {
+
+    const [movieList, setMovieList] = useState([]);
+
     
     //For navigating to DetailScreen
     const navigation = useNavigation();
@@ -15,6 +19,21 @@ const MoviewPreview = (props) => {
     //Modify the language to start with a capital letter
     let capitalizedLanguage = props.language.charAt(0).toUpperCase()+props.language.slice(1);
 
+    async function addToMylist() {
+        const response = await fetch("http://10.0.2.2:3000/api/persons",
+        {
+          method:'POST',
+          headers:{
+            'Content-Type':'application/json'
+          },
+          body:JSON.stringify({name:props.name, language:props.language, genre:props.genre, duration:props.duration})
+        });
+      
+    const responseData = await response.json();
+    console.log(responseData);
+    setMovieList(movieList=>[...movieList, responseData]);
+      }
+    
     return (
         
         <View style={styles.resultContainer}>
@@ -28,7 +47,7 @@ const MoviewPreview = (props) => {
                 </View>
                 <View style={styles.resultButtonsView}>
                 <View style={styles.resultAddButtonView}>
-                    <TouchableOpacity style={styles.resultButtonStyle}>
+                    <TouchableOpacity style={styles.resultButtonStyle} onPress={addToMylist}>
                     <Image source={require('../assets/ribbon.png')} style={styles.resultImageAdd}/>
                     </TouchableOpacity>
                 </View>
