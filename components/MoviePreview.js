@@ -26,7 +26,7 @@ const MoviewPreview = (props) => {
           headers:{
             'Content-Type':'application/json'
           },
-          body:JSON.stringify({name:props.name, language:props.language, genre:props.genre, duration:props.duration})
+          body:JSON.stringify({name:props.name, language:props.language, releaseDate:release_date, duration:props.duration, image:props.image.uri})
         });
       
     const responseData = await response.json();
