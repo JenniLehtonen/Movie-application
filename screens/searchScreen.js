@@ -1,22 +1,9 @@
-
-//import * as React from 'react';
-import {View, Text, TextInput, TouchableOpacity, Image, Button, ScrollView, FlatList,Alert, ActivityIndicator,StyleSheet} from 'react-native';
-
 import React, { useState, useEffect } from 'react';
-
-
+import {View, Text, TextInput, TouchableOpacity, Image} from 'react-native';
 import styles from '../styles/SearchScreenStyle';
 import MoviePreview from '../components/MoviePreview';
 
-//import {StyleSheet, Text, View, TextInput, Button, ScrollView, FlatList,Alert, ActivityIndicator} from 'react-native';
 const SearchScreen = () => {
-
-
-  let testDataArray = [{name:"Transformers", language: "Eng", genre: "Sci-fi", duration: "2:40", image: require('../assets/testImg.jpg')}, {name:"Harry Potter", language: "Eng", genre:"Fiction", duration: "2:30", image: require('../assets/testImg.jpg')}, 
-  {name:"Die hard 2", language: "Eng", genre:"Action", duration: "2:10", image: require('../assets/testImg.jpg')}, {name:"Blancanieves", language: "Spa", genre:"Fairytale", duration: "2:25", image: require('../assets/testImg.jpg')}];
-  
-  
-
 
   let keyValue = 1;
 
@@ -36,7 +23,7 @@ const SearchScreen = () => {
     setShowMovies(false); 
 
     //Set the search URL with the user's search input
-    setSearchUrl("https://api.themoviedb.org/3/search/movie?api_key=&language=en-US&query="+enteredText+"&page=1&include_adult=false")
+    setSearchUrl("https://api.themoviedb.org/3/search/movie?api_key=e25210b6bbfca7fe71b09ec050cd892b&language=en-US&query="+enteredText+"&page=1&include_adult=false")
   }
 
   //Search movies from API
@@ -78,12 +65,11 @@ const SearchScreen = () => {
   //  console.log("RELEASE DATE: " + result.results[0].release_date);
   //  console.log("POSTER: " + result.results[0].poster_path);
   
-  let testDataArray = [
-    {name:"Transformers", language: "Eng", genre: "Sci-fi", duration: "2:40", image: require('../assets/testImg.jpg'), description:"This is a description of the awesome movie. I'm sure you'll want to watch it!"}, 
-    {name:"Harry Potter", language: "Eng", genre:"Fiction", duration: "2:30", image: require('../assets/testImg.jpg'), description:"This is a description of the awesome movie. I'm sure you'll want to watch it!"}, 
-    {name:"Die hard 2", language: "Eng", genre:"Action", duration: "2:10", image: require('../assets/testImg.jpg'), description:"This is a description of the awesome movie. I'm sure you'll want to watch it!"}, 
-    {name:"Blancanieves", language: "Spa", genre:"Fairytale", duration: "2:25", image: require('../assets/testImg.jpg'), description:"This is a description of the awesome movie. I'm sure you'll want to watch it!"}];
-
+  // let testDataArray = [
+  //   {name:"Transformers", language: "Eng", genre: "Sci-fi", duration: "2:40", image: require('../assets/testImg.jpg'), description:"This is a description of the awesome movie. I'm sure you'll want to watch it!"}, 
+  //   {name:"Harry Potter", language: "Eng", genre:"Fiction", duration: "2:30", image: require('../assets/testImg.jpg'), description:"This is a description of the awesome movie. I'm sure you'll want to watch it!"}, 
+  //   {name:"Die hard 2", language: "Eng", genre:"Action", duration: "2:10", image: require('../assets/testImg.jpg'), description:"This is a description of the awesome movie. I'm sure you'll want to watch it!"}, 
+  //   {name:"Blancanieves", language: "Spa", genre:"Fairytale", duration: "2:25", image: require('../assets/testImg.jpg'), description:"This is a description of the awesome movie. I'm sure you'll want to watch it!"}];
 
 
   return (
@@ -95,25 +81,8 @@ const SearchScreen = () => {
           <TouchableOpacity style={styles.buttonStyle} onPress={searchMovies}>
             <Image source={require('../assets/magnifying-glass.png')} style={styles.image}/>
           </TouchableOpacity>
-          
         </View>
       </View> 
-
-      {
-        testDataArray.map((element) => {
-          return(
-            <MoviePreview name={element.name} language={element.language} genre={element.genre} duration={element.duration} image={element.image}/>
-         
-            
-          );
-        })
-        
-      } 
-      
-     
-   
- </View>
-
       {/* { showMovies==true ?
         result.map((element) => { */}
           {/* return( //TÄHÄN RESULT.RESULTS[0].TITLE JNE. */}
@@ -131,11 +100,7 @@ const SearchScreen = () => {
         
       }   */}
     </View>
-
   );
-    }
+}
 
- 
-
-    
 export default SearchScreen;
