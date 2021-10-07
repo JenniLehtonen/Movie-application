@@ -15,6 +15,14 @@ const MoviePreview = (props) => {
     //Modify the language to start with a capital letter
     let capitalizedLanguage = props.language.charAt(0).toUpperCase()+props.language.slice(1);
 
+    //Get the name of the movie
+    let movieTitle = props.name;
+
+    //If the name is too long, make it shorter
+    if(movieTitle.length>28){
+        movieTitle = movieTitle.slice(0,28)+"...";
+    }
+
     return (
         
         <View style={styles.resultContainer}>
@@ -23,7 +31,7 @@ const MoviePreview = (props) => {
                 <Image source={props.image} style={styles.resultImage}/>
                 </View>
                 <View style={styles.resultTextView}>
-                <Text style={styles.resultTitle}>{props.name}</Text>
+                <Text style={styles.resultTitle}>{movieTitle}</Text>
                 <Text style={styles.resultDetails}>{capitalizedLanguage} | {release_date} | {props.duration}</Text>
                 </View>
                 <View style={styles.resultButtonsView}>

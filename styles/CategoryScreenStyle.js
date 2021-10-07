@@ -4,7 +4,7 @@ export default StyleSheet.create({
       container: {
         flex: 1,
         backgroundColor: '#1F1C2C',
-        padding: 20,
+        paddingTop: 20,
         alignItems: 'center'
       },
       textStyle: {
@@ -26,7 +26,7 @@ export default StyleSheet.create({
         justifyContent: 'center',
         padding: 10,
         height: 80,
-        width: 200,
+        width: 220,
         marginTop: 10
       },
       categoryButtonStyle: {
@@ -46,6 +46,7 @@ export default StyleSheet.create({
         justifyContent: 'flex-start',
         padding: 20,
         width: '100%',
-        height: 'auto'
+        height: 'auto',
+        alignItems: 'center'
       },
 })

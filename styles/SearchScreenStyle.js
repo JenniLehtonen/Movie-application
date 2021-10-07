@@ -69,7 +69,7 @@ export default StyleSheet.create({
         borderRadius: 25,
         backgroundColor: '#62606B',
         padding: 10,
-        height: 100
+        height: 100,
       },
       resultTextView: {
         width: '60%',
