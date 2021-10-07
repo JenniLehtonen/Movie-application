@@ -14,7 +14,7 @@ const {name} = route.params;
 const {image} = route.params;
 const {language} = route.params;
 const {releaseDate} = route.params;
-const {duration} = route.params;
+const {genre} = route.params;
 const {description} = route.params;
   return(
     <View style={styles.container}>
@@ -33,7 +33,7 @@ const {description} = route.params;
       <View style={styles.textContentStyle}>
         <Image source={image} style={styles.Image}/>
         <Text style={styles.titleStyle}>{name}</Text>
-        <Text style={styles.detailsStyle}>{language} | {releaseDate} | {duration}</Text>
+        <Text style={styles.detailsStyle}>{language} | {releaseDate} | {genre}</Text>
         <View style={styles.borderstyle}></View>
         <View>
           <Text style={styles.titleStyle2}>Story line</Text>

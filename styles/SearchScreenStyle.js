@@ -5,7 +5,7 @@ export default StyleSheet.create({
         flex: 1,
         backgroundColor: '#1F1C2C',
         alignItems: 'center',
-        justifyContent: 'center'
+        padding: 20
       },
       textStyle: {
         color: 'white',
@@ -69,7 +69,7 @@ export default StyleSheet.create({
         borderRadius: 25,
         backgroundColor: '#62606B',
         padding: 10,
-        height: 100
+        height: 100,
       },
       resultTextView: {
         width: '60%',

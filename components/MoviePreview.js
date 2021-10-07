@@ -1,14 +1,10 @@
-//import * as React from 'react';
-import React, { useState, useEffect } from "react";
+import * as React from 'react';
 import {View, Text, TouchableOpacity, Image} from 'react-native';
 import styles from '../styles/SearchScreenStyle';
 import { useNavigation } from '@react-navigation/native';
 
 
 const MoviewPreview = (props) => {
-
-    const [movieList, setMovieList] = useState([]);
-
     
     //For navigating to DetailScreen
     const navigation = useNavigation();
@@ -18,6 +14,80 @@ const MoviewPreview = (props) => {
 
     //Modify the language to start with a capital letter
     let capitalizedLanguage = props.language.charAt(0).toUpperCase()+props.language.slice(1);
+
+    //Get the name of the movie
+    let movieTitle = props.name;
+
+    //If the name is too long, make it shorter
+    if(movieTitle.length>28){
+        movieTitle = movieTitle.slice(0,28)+"...";
+    }
+
+    let movieGenre;
+
+    if(props.searchByGenre==true){
+        movieGenre = props.genre2
+    } else{
+        switch (props.genre[0]){
+            case 28:
+                movieGenre = "Action";
+              break;
+            case 12:
+                movieGenre = "Adventure";
+              break;
+            case 16:
+                movieGenre = "Animation";
+              break;
+            case 35:
+                movieGenre = "Comedy";
+              break;
+            case 80:
+                movieGenre = "Crime";
+              break;
+            case 99:
+                movieGenre = "Documentary";
+              break;
+            case 18:
+                movieGenre = "Drama";
+              break;
+            case 10751:
+                movieGenre = "Family";
+              break;
+            case 14:
+                movieGenre = "Fantasy";
+              break;
+            case 36:
+                movieGenre = "History";
+              break;
+            case 27:
+                movieGenre = "Horror";
+              break;
+            case 10402:
+                movieGenre = "Music";
+              break;
+            case 9648:
+                movieGenre = "Mystery";
+              break;
+            case 10749:
+                movieGenre = "Romance";
+              break;
+            case 878:
+                movieGenre = "Sci-Fi";
+              break;
+            case 10770:
+                movieGenre = "TV Movie";
+              break;
+            case 53:
+                movieGenre = "Thriller";
+              break;
+            case 10752:
+                movieGenre = "War";
+              break;
+            case 37:
+                movieGenre = "Western";
+              break;
+          }
+    }
 
     async function addToMylist() {
         const response = await fetch("http://10.0.2.2:3000/api/persons",
@@ -33,6 +103,7 @@ const MoviewPreview = (props) => {
     console.log(responseData);
     setMovieList(movieList=>[...movieList, responseData]);
       }
+
     
     return (
         
@@ -42,8 +113,8 @@ const MoviewPreview = (props) => {
                 <Image source={props.image} style={styles.resultImage}/>
                 </View>
                 <View style={styles.resultTextView}>
-                <Text style={styles.resultTitle}>{props.name}</Text>
-                <Text style={styles.resultDetails}>{capitalizedLanguage} | {release_date} | {props.duration}</Text>
+                <Text style={styles.resultTitle}>{movieTitle}</Text>
+                <Text style={styles.resultDetails}>{capitalizedLanguage} | {release_date} | {movieGenre}</Text>
                 </View>
                 <View style={styles.resultButtonsView}>
                 <View style={styles.resultAddButtonView}>
@@ -53,7 +124,7 @@ const MoviewPreview = (props) => {
                 </View>
                 <View style={styles.resultInfoButtonView}>
                     <TouchableOpacity style={styles.resultButtonStyle} 
-                    onPress={() => navigation.navigate('DetailScreen', {name:props.name, image:props.image, language:capitalizedLanguage, releaseDate: release_date, duration:props.duration, description: props.description})}>
+                    onPress={() => navigation.navigate('DetailScreen', {name:props.name, image:props.image, language:capitalizedLanguage, releaseDate: release_date, genre: movieGenre, description: props.description})}>
                     <View style={{backgroundColor: 'white', height: 25, width: 25, borderRadius: 100, justifyContent: 'center', alignItems: 'center'}}>
                         <Image source={require('../assets/play.png')} style={styles.resultImageInfo}/>
                     </View>
@@ -65,4 +136,4 @@ const MoviewPreview = (props) => {
     );
 }
 
-export default MoviewPreview;
+export default MoviePreview;

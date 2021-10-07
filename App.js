@@ -14,11 +14,12 @@ import MiddleScreen from './screens/MiddleScreen';
 import LoginScreen from './screens/LoginScreen';
 import LogoutScreen from './screens/LogoutScreen';
 import DetailScreen from './screens/DetailScreen';
+import MoviesByCategoryScreen from './screens/MoviesByCategoryScreen';
 
 const Drawer = createDrawerNavigator();
 
-
 export default function App() {
+
   const [isLoggedIn, setIsLoggedIn] = useState(false);
   const [name, setName] = useState('');
 
