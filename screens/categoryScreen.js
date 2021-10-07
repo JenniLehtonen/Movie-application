@@ -28,7 +28,7 @@ const CategoryScreen = () => {
         renderItem={category => (
           <View style={styles.categoryBox}>
                 <Text style={styles.categoryTitle}>{category.item.name}</Text>
-                <TouchableOpacity style={styles.categoryButtonStyle} onPress={() => navigation.navigate('MoviesByCategoryScreen', {id:category.item.id, name:category.item.name})}>
+                <TouchableOpacity style={styles.categoryButtonStyle} onPress={() => navigation.navigate('MoviesByCategoryScreen', {id:category.item.id, category:category.item.name})}>
                     <View style={{backgroundColor: 'white', height: 25, width: 25, borderRadius: 100, justifyContent: 'center', alignItems: 'center'}}>
                         <Image source={require('../assets/play.png')} style={styles.categoryImageButton}/>
                     </View>
