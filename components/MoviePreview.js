@@ -4,8 +4,16 @@ import styles from '../styles/SearchScreenStyle';
 import { useNavigation } from '@react-navigation/native';
 import React, {useState, useEffect} from 'react';
 
+
 const MoviePreview = (props) => {
     const [movieList, setMovieList] = useState([]);
+
+import AppContext from '../components/AppContext';
+
+
+  const myContext = useContext(AppContext);
+    
+
     //For navigating to DetailScreen
     const navigation = useNavigation();
 
@@ -19,15 +27,20 @@ const MoviePreview = (props) => {
     let movieTitle = props.name;
 
     //If the name is too long, make it shorter
-    if(movieTitle.length>28){
-        movieTitle = movieTitle.slice(0,28)+"...";
+    if(movieTitle.length>35){
+        movieTitle = movieTitle.slice(0,35)+"...";
     }
 
     let movieGenre;
-
-    if(props.searchByGenre==true){
-        movieGenre = props.genre2
-    } else{
+    
+    if(props.searchByGenre==true){ //If the user has searched movies by a certain category, show this category name
+        //If the genre is Science Fiction, shorten it to Sci-Fi
+        if(props.genre2 == "Science Fiction"){
+            movieGenre = "Sci-Fi";
+        } else {
+            movieGenre = props.genre2
+        }
+    } else{ //If the user has searched by title, take the category name from the search result
         switch (props.genre[0]){
             case 28:
                 movieGenre = "Action";
@@ -90,19 +103,36 @@ const MoviePreview = (props) => {
     }
 
     async function addToMylist() {
-        const response = await fetch("http://10.0.2.2:3000/api/persons",
+        const response = await fetch("http://10.0.2.2:8080/rest/movierest/addjsonmovie",
         {
           method:'POST',
           headers:{
             'Content-Type':'application/json'
           },
-          body:JSON.stringify({ name:props.name, language:props.language, genre:props.genre, releaseDate:props.release_date, image:props.image})
+
+          body:JSON.stringify({name:props.name, image:props.image.url, language:props.language, releaseDate:props.releaseDate, genre:props.genre, description:props.description, user:myContext.user})
+
         });
       
     const responseData = await response.json();
     console.log(responseData);
-    setMovieList(movieList=>[...movieList, responseData]);
-      }
+
+    if (responseData.result == true) {
+      Alert.alert(
+        "Success",
+        [
+          { text: "OK" }
+        ]
+      );
+    } else {
+      Alert.alert(
+        "Failure",
+        [
+          { text: "OK" }
+        ]
+      );
+    }
+  }
 
     
     return (
@@ -110,11 +140,13 @@ const MoviePreview = (props) => {
         <View style={styles.resultContainer}>
             <View style={styles.resultBox}>
                 <View style={styles.resultImageView}>
-                <Image source={props.image} style={styles.resultImage}/>
+                    <Image source={props.image} style={styles.resultImage}/>
                 </View>
                 <View style={styles.resultTextView}>
-                <Text style={styles.resultTitle}>{movieTitle}</Text>
-                <Text style={styles.resultDetails}>{capitalizedLanguage} | {release_date} | {movieGenre}</Text>
+                    <View style={{height:'60%', overflow: 'hidden'}}>
+                        <Text style={styles.resultTitle}>{movieTitle}</Text>
+                    </View>
+                    <Text style={styles.resultDetails}>{capitalizedLanguage} | {release_date} | {movieGenre}</Text>
                 </View>
                 <View style={styles.resultButtonsView}>
                 <View style={styles.resultAddButtonView}>
