@@ -11,7 +11,7 @@ const CategoryScreen = () => {
   //API search result
   const [categories, setCategories] = useState();
 
-  const searchUrl = "https://api.themoviedb.org/3/genre/movie/list?api_key=&language=en-US";
+  const searchUrl = "https://api.themoviedb.org/3/genre/movie/list?api_key=68f7aed1b2f4271575d8bd561ee17fba&language=en-US";
 
   useEffect(() => { 
     //Fetch categories from the API and save them to state

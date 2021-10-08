@@ -3,8 +3,10 @@ import {View, Text, TouchableOpacity, Image} from 'react-native';
 import styles from '../styles/SearchScreenStyle';
 import { useNavigation } from '@react-navigation/native';
 
+import AppContext from '../components/AppContext';
 
-const MoviewPreview = (props) => {
+const MoviePreview = (props) => {
+  const myContext = useContext(AppContext);
     
     //For navigating to DetailScreen
     const navigation = useNavigation();
@@ -90,19 +92,34 @@ const MoviewPreview = (props) => {
     }
 
     async function addToMylist() {
-        const response = await fetch("http://10.0.2.2:3000/api/persons",
+        const response = await fetch("http://10.0.2.2:8080/rest/movierest/addjsonmovie",
         {
           method:'POST',
           headers:{
             'Content-Type':'application/json'
           },
-          body:JSON.stringify({name:props.name, language:props.language, genre:props.genre, duration:props.duration, image:props.image.url})
+          body:JSON.stringify({name:props.name, image:props.image.url, language:props.language, releaseDate:props.releaseDate, genre:props.genre, description:props.description, user:myContext.user})
         });
       
     const responseData = await response.json();
     console.log(responseData);
-    setMovieList(movieList=>[...movieList, responseData]);
-      }
+
+    if (responseData.result == true) {
+      Alert.alert(
+        "Success",
+        [
+          { text: "OK" }
+        ]
+      );
+    } else {
+      Alert.alert(
+        "Failure",
+        [
+          { text: "OK" }
+        ]
+      );
+    }
+  }
 
     
     return (
