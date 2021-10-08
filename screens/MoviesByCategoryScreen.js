@@ -23,7 +23,7 @@ const MoviesByCategoryScreen = ({route}) => {
   //Hide the ActivityIndicator after the specified time
     setTimeout(() => {
       setLoading(false);
-    }, 2500);
+    }, 2000);
   }
 
   useEffect(() => { 
