@@ -60,8 +60,7 @@ export default StyleSheet.create({
       resultContainer: {
         flex: 1,
         justifyContent: 'flex-start',
-        padding: 20,
-        paddingTop: 0,
+        paddingTop: 15,
         width: '100%'
       },
       resultBox: {
@@ -72,16 +71,16 @@ export default StyleSheet.create({
         height: 100,
       },
       resultTextView: {
-        width: '60%',
+        width: '65%',
         flexDirection: 'column',
-        paddingLeft: 10
+        paddingLeft: 8
       },
       resultImageView: {
         width: '25%',
         flexDirection: 'column'
       },
       resultButtonsView: {
-        width: '15%',
+        width: '10%',
         flexDirection: 'column',
         alignItems: 'flex-end',
       },

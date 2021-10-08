@@ -38,7 +38,7 @@ export default function App() {
     logout,
   };
 
-  if (userSettings.isLoggedIn == true) {
+  // if (userSettings.isLoggedIn == true) {
     return (
       <AppContext.Provider value={userSettings}>
         <NavigationContainer>
@@ -67,9 +67,9 @@ export default function App() {
             <Drawer.Screen name="DetailScreen" options={{ headerShown: false }}>
               {props => <DetailScreen {...props} />}
             </Drawer.Screen>
-
-            <Drawer.Screen name="MoviesByCategoryScreen" options={{ headerShown: false }}>
-              {props => <MoviesByCategoryScreen {...props} />}
+            
+            <Drawer.Screen name="MoviesByCategoryScreen" >
+              {props => <MoviesByCategoryScreen {...props} extraData={"extra"} />}
             </Drawer.Screen>
 
             <Drawer.Screen name="Logout">
@@ -85,32 +85,32 @@ export default function App() {
       </AppContext.Provider>
 
     );
-  } else {
+  // } else {
 
 
-    return (
-      <AppContext.Provider value={userSettings}>
+  //   return (
+  //     <AppContext.Provider value={userSettings}>
 
-        <NavigationContainer>
+  //       <NavigationContainer>
 
-          <Drawer.Navigator initialRouteName="Login">
+  //         <Drawer.Navigator initialRouteName="Login">
 
-            <Drawer.Screen name="Register" options={{ headerShown: false }}>
-              {props => <RegisterScreen {...props} />}
-            </Drawer.Screen>
+  //           <Drawer.Screen name="Register" options={{ headerShown: false }}>
+  //             {props => <RegisterScreen {...props} />}
+  //           </Drawer.Screen>
 
-            <Drawer.Screen name="Login" options={{ headerShown: false }}>
-              {props => <LoginScreen {...props} />}
-            </Drawer.Screen>
+  //           <Drawer.Screen name="Login" options={{ headerShown: false }}>
+  //             {props => <LoginScreen {...props} />}
+  //           </Drawer.Screen>
 
-            <Drawer.Screen name=" " options={{ headerShown: false }}>
-              {props => <MiddleScreen {...props} />}
-            </Drawer.Screen>
+  //           <Drawer.Screen name=" " options={{ headerShown: false }}>
+  //             {props => <MiddleScreen {...props} />}
+  //           </Drawer.Screen>
 
-          </Drawer.Navigator>
-        </NavigationContainer>
-      </AppContext.Provider>
+  //         </Drawer.Navigator>
+  //       </NavigationContainer>
+  //     </AppContext.Provider>
 
-    )
-  }
+  //   )
+  // }
 }

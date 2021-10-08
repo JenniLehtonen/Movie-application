@@ -16,7 +16,10 @@ export default StyleSheet.create({
     attributionContainer: {
       marginTop: 'auto'
     },
-    
+    //For ScrollView
+    ScrollViewStyle: {
+      height: 170
+    },
     //For go back and add to list buttons
     buttonView: {
       flexDirection: 'row',
@@ -67,7 +70,11 @@ export default StyleSheet.create({
       fontSize: 16,
       color: '#98979A'
     },
-  
+    tmdbStyle: {
+      color: '#98979A',
+      fontSize: 14,
+    },
+
     //Button styles
     ButtonStyle: {
       height: 35,

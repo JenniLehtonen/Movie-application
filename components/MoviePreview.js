@@ -21,15 +21,20 @@ const MoviePreview = (props) => {
     let movieTitle = props.name;
 
     //If the name is too long, make it shorter
-    if(movieTitle.length>28){
-        movieTitle = movieTitle.slice(0,28)+"...";
+    if(movieTitle.length>35){
+        movieTitle = movieTitle.slice(0,35)+"...";
     }
 
     let movieGenre;
-
-    if(props.searchByGenre==true){
-        movieGenre = props.genre2
-    } else{
+    
+    if(props.searchByGenre==true){ //If the user has searched movies by a certain category, show this category name
+        //If the genre is Science Fiction, shorten it to Sci-Fi
+        if(props.genre2 == "Science Fiction"){
+            movieGenre = "Sci-Fi";
+        } else {
+            movieGenre = props.genre2
+        }
+    } else{ //If the user has searched by title, take the category name from the search result
         switch (props.genre[0]){
             case 28:
                 movieGenre = "Action";
@@ -127,11 +132,13 @@ const MoviePreview = (props) => {
         <View style={styles.resultContainer}>
             <View style={styles.resultBox}>
                 <View style={styles.resultImageView}>
-                <Image source={props.image} style={styles.resultImage}/>
+                    <Image source={props.image} style={styles.resultImage}/>
                 </View>
                 <View style={styles.resultTextView}>
-                <Text style={styles.resultTitle}>{movieTitle}</Text>
-                <Text style={styles.resultDetails}>{capitalizedLanguage} | {release_date} | {movieGenre}</Text>
+                    <View style={{height:'60%', overflow: 'hidden'}}>
+                        <Text style={styles.resultTitle}>{movieTitle}</Text>
+                    </View>
+                    <Text style={styles.resultDetails}>{capitalizedLanguage} | {release_date} | {movieGenre}</Text>
                 </View>
                 <View style={styles.resultButtonsView}>
                 <View style={styles.resultAddButtonView}>
