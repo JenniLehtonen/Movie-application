@@ -1,11 +1,11 @@
-import * as React from 'react';
+//import * as React from 'react';
 import {View, Text, TouchableOpacity, Image} from 'react-native';
 import styles from '../styles/SearchScreenStyle';
 import { useNavigation } from '@react-navigation/native';
+import React, {useState, useEffect} from 'react';
 
-
-const MoviewPreview = (props) => {
-    
+const MoviePreview = (props) => {
+    const [movieList, setMovieList] = useState([]);
     //For navigating to DetailScreen
     const navigation = useNavigation();
 
@@ -96,7 +96,7 @@ const MoviewPreview = (props) => {
           headers:{
             'Content-Type':'application/json'
           },
-          body:JSON.stringify({name:props.name, language:props.language, genre:props.genre, duration:props.duration, image:props.image.url})
+          body:JSON.stringify({ name:props.name, language:props.language, genre:props.genre, releaseDate:props.release_date, image:props.image})
         });
       
     const responseData = await response.json();

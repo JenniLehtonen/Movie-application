@@ -3,6 +3,7 @@ import {View, Text, TextInput, TouchableOpacity, Image, Button, ScrollView, Flat
 import MoviePreview from '../components/MoviePreview';
 import React, {useState, useEffect} from 'react';
 import styles from '../styles/SearchScreenStyle';
+//import { baseProps } from 'react-native-gesture-handler/lib/typescript/handlers/gestureHandlers';
 const MylistScreen = () => {
   const [hasError, setErrors] = useState(false);
   const [movies, setMovies] = useState([]);
@@ -10,6 +11,13 @@ const MylistScreen = () => {
   const [isLoading, setLoading]=useState(true);
 
 
+  const deleteMovie = async (id) =>{
+    const response = await fetch ("http://10.0.2.2:3000/api/persons/"+id,
+    {
+      method:'DELETE',
+    });
+    fetchData();
+  }
 
   async function fetchData() {
     
@@ -74,25 +82,30 @@ const MylistScreen = () => {
             data={movies}
             
             renderItem={({item}) => (
+              <View style={styles.resultContainer}>
               <View style={styles.resultBox}>
                 <View style={styles.resultImageView}>
-                <Image source={item.image.url} style={styles.resultImage}/>
+                  
+                <Image source={item.image} style={styles.resultImage}/>
                 </View>
               <View style={styles.resultTextView}>
                  <Text style={styles.resultTitle}>{item.name}</Text>
-                <Text style={styles.resultDetails}> {item.name} | {item.language} | {item.genre} | {item.duration}</Text>
-                <View style={styles.resultButtonsView}>
-                <View style={styles.resultAddButtonView}>
+                <View >
+                
+                <Button style={styles.resultButtonStyle} title="Remove" onPress={()=>deleteMovie(item.id)}/>
+                
+                </View>
                 
                 </View>
 
                 </View>
-              </View>
-              </View>
-              
+          
+                </View>
             )}
             
+            
         />
+        
       </View>
     );
   }
