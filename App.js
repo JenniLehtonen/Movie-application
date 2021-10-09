@@ -44,7 +44,7 @@ export default function App() {
         <NavigationContainer>
           <Drawer.Navigator initialRouteName="Home page">
 
-            <Drawer.Screen name="Home page">
+            <Drawer.Screen name="Home page" options={{ headerShown: false }}>
               {props => <HomeScreen {...props} extraData={"extra"} />}
             </Drawer.Screen>
 

@@ -24,7 +24,7 @@ const SearchScreen = () => {
     setShowMovies(false); 
 
     //Set the search URL with the user's search input
-    setSearchUrl("https://api.themoviedb.org/3/search/movie?api_key=e25210b6bbfca7fe71b09ec050cd892b&language=en-US&query="+enteredText+"&page=1&include_adult=false")
+    setSearchUrl("https://api.themoviedb.org/3/search/movie?api_key=&language=en-US&query="+enteredText+"&page=1&include_adult=false")
   }
 
   //Search movies from API

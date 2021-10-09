@@ -7,6 +7,7 @@ import styles from '../styles/SearchScreenStyle';
 import AppContext from '../components/AppContext';
 
 
+//import { baseProps } from 'react-native-gesture-handler/lib/typescript/handlers/gestureHandlers';
 const MylistScreen = () => {
   const [hasError, setErrors] = useState(false);
   const [someErrors, setSomeErrors] = useState('');
@@ -16,6 +17,13 @@ const MylistScreen = () => {
   const myContext = useContext(AppContext);
 
 
+  const deleteMovie = async (id) =>{
+    const response = await fetch ("http://10.0.2.2:3000/api/persons/"+id,
+    {
+      method:'DELETE',
+    });
+    fetchData();
+  }
 
   async function fetchData() {
 
@@ -79,30 +87,34 @@ const MylistScreen = () => {
 
         <FlatList
 
-
-          data={movies}
-
-          renderItem={({ item }) => (
-            <View style={styles.resultBox}>
-              <View style={styles.resultImageView}>
-                <Image source={item.image} style={styles.resultImage} />
-              </View>
+            
+            data={movies}
+            
+            renderItem={({item}) => (
+              <View style={styles.resultContainer}>
+              <View style={styles.resultBox}>
+                <View style={styles.resultImageView}>
+                  
+                <Image source={item.image} style={styles.resultImage}/>
+                </View>
               <View style={styles.resultTextView}>
-                <Text style={styles.resultTitle}>{item.name}</Text>
-                <Text style={styles.resultDetails}>{item.language}</Text>
-                <View style={styles.resultButtonsView}>
-                  <View style={styles.resultAddButtonView}>
-
-                  </View>
+                 <Text style={styles.resultTitle}>{item.name}</Text>
+                <View >
+                
+                <Button style={styles.resultButtonStyle} title="Remove" onPress={()=>deleteMovie(item.id)}/>
+                
+                </View>
+                
+                </View>
 
                 </View>
-              </View>
-            </View>
-
-          )}
-          keyExtractor={item => item.id.toString()}
-
+          
+                </View>
+            )}
+            
+            
         />
+        
       </View>
     );
   }

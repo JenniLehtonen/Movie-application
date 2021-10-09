@@ -2,11 +2,20 @@ import React, { useContext } from 'react';
 import { View, Text, TouchableOpacity, Image, Alert } from 'react-native';
 import styles from '../styles/SearchScreenStyle';
 import { useNavigation } from '@react-navigation/native';
-
+import React, { useState, useEffect, useContext } from 'react';
 import AppContext from '../components/AppContext';
 
 const MoviePreview = (props) => {
+  const [movieList, setMovieList] = useState([]);
+
+
+
+
   const myContext = useContext(AppContext);
+
+
+  //For navigating to DetailScreen
+  const navigation = useNavigation();
 
   //For navigating to DetailScreen
   const navigation = useNavigation();
@@ -134,24 +143,27 @@ const MoviePreview = (props) => {
     const responseData = await response.json();
     console.log(responseData);
 
-    if (responseData.result == true) {
-      Alert.alert(
-        "Success",
-        props.name + "has been added to your list.",
-        [
-          { text: "OK" }
-        ]
-      );
-    } else {
-      Alert.alert(
-        "Failure",
-        "List was not updated."
-        [
-          { text: "OK" }
-        ]
-      );
-    }
+    setMovieList(movieList => [...movieList, responseData]);
   }
+
+  if (responseData.result == true) {
+    Alert.alert(
+      "Success",
+      props.name + "has been added to your list.",
+      [
+        { text: "OK" }
+      ]
+    );
+  } else {
+    Alert.alert(
+      "Failure",
+      "List was not updated."
+      [
+      { text: "OK" }
+      ]
+    );
+  }
+
 
 
   return (
