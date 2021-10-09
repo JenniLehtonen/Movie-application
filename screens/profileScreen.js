@@ -28,7 +28,7 @@ export default function ProfileScreen(props) {
         ]
       );
       myContext.logout();
-      props.navigation.navigate(" ");
+      props.navigation.navigate("Middle");
     } else {
       Alert.alert(
         "Failure",

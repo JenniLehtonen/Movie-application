@@ -69,6 +69,7 @@ export default StyleSheet.create({
         backgroundColor: '#62606B',
         padding: 10,
         height: 100,
+        marginBottom:10,
       },
       resultTextView: {
         width: '65%',
@@ -119,5 +120,17 @@ export default StyleSheet.create({
         borderRadius: 100,
         justifyContent: 'center',
         alignItems: 'center'
-      }
+      },
+
+      button: {
+        padding: 15,
+        backgroundColor: '#FDAC33',
+        borderRadius: 10,
+        width: '90%',
+        marginBottom:20,
+    },
+    buttonText: {
+        color: 'white',
+        textAlign: 'center',
+    }
 });

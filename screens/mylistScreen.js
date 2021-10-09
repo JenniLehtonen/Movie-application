@@ -1,97 +1,107 @@
-import {View, Text, TextInput, TouchableOpacity, Image, Button, ScrollView, FlatList,Alert, ActivityIndicator,StyleSheet} from 'react-native';
+import { View, Text, TextInput, TouchableOpacity, Image, Button, ScrollView, FlatList, Alert, ActivityIndicator, StyleSheet } from 'react-native';
 
 import MoviePreview from '../components/MoviePreview';
-import React, {useState, useEffect} from 'react';
+import React, { useState, useEffect, useContext } from 'react';
 import styles from '../styles/SearchScreenStyle';
+
+import AppContext from '../components/AppContext';
+
+
 const MylistScreen = () => {
   const [hasError, setErrors] = useState(false);
+  const [someErrors, setSomeErrors] = useState('');
   const [movies, setMovies] = useState([]);
-  const [movieList, setMovieList] = useState([]);
-  const [isLoading, setLoading]=useState(true);
+  const [isLoading, setLoading] = useState(true);
+
+  const myContext = useContext(AppContext);
 
 
 
   async function fetchData() {
-    
+
     let res = null;
-    try{
-      
-      res=await fetch("http://10.0.2.2:3000/api/persons");
+    try {
+
+      res = await fetch("http://10.0.2.2:8080/rest/movieservice/getlist/" + myContext.name);
     }
-    catch(error){
+    catch (error) {
       setErrors(true);
     }
 
-    try{
+    try {
       //Getting json from the response
       const responseData = await res.json();
       console.log(responseData);
       setMovies(responseData);
     }
-    catch(err){
+    catch (err) {
       setErrors(true);
-      setSomeErrors("ERROR: "+hasError+ " my error "+err);
-      console.log(someError);
+      setSomeErrors("ERROR: " + hasError + " my error " + err);
+      console.log(someErrors);
     }
   }
 
-  
+
   useEffect(() => {
-      if (isLoading==true){
+    if (isLoading == true) {
       setLoading(false);
       fetchData();
-     
+
     }
   });
 
-  
-  if (isLoading==true) {
+
+  if (isLoading == true) {
     return (
-      <View style={{flex: 1, padding: 20, justifyContent:'center'}}>
+      <View style={{ flex: 1, padding: 20, justifyContent: 'center' }}>
         <ActivityIndicator size="large" color="#00ff00" />
       </View>
     );
   }
-  
-  else if(hasError){
-    return(
-      <View style={{flex: 1, padding: 20, justifyContent:'center'}}>
+
+  else if (hasError) {
+    return (
+      <View style={{ flex: 1, padding: 20, justifyContent: 'center' }}>
         <Text>{hasError}</Text>
-        <Text>{""+someError}</Text>
+        <Text>{"" + someErrors}</Text>
       </View>
     );
   }
-  
-  else{
+
+  else {
     return (
       <View style={styles.container}>
         <Text>{hasError}</Text>
 
-     
+        <TouchableOpacity activeOpacity={0.8} style={styles.button} onPress={fetchData}>
+          <Text style={styles.buttonText}>Reload list</Text>
+        </TouchableOpacity>
+
         <FlatList
 
-            
-            data={movies}
-            
-            renderItem={({item}) => (
-              <View style={styles.resultBox}>
-                <View style={styles.resultImageView}>
-                <Image source={item.image.url} style={styles.resultImage}/>
-                </View>
+
+          data={movies}
+
+          renderItem={({ item }) => (
+            <View style={styles.resultBox}>
+              <View style={styles.resultImageView}>
+                <Image source={item.image} style={styles.resultImage} />
+              </View>
               <View style={styles.resultTextView}>
-                 <Text style={styles.resultTitle}>{item.name}</Text>
-                <Text style={styles.resultDetails}> {item.name} | {item.language} | {item.genre} | {item.duration}</Text>
+                <Text style={styles.resultTitle}>{item.name}</Text>
+                <Text style={styles.resultDetails}>{item.language}</Text>
                 <View style={styles.resultButtonsView}>
-                <View style={styles.resultAddButtonView}>
-                
-                </View>
+                  <View style={styles.resultAddButtonView}>
+
+                  </View>
 
                 </View>
               </View>
-              </View>
-              
-            )}
-            
+            </View>
+
+          )}
+          keyExtractor={item => item.id.toString()}
+
         />
       </View>
     );
@@ -109,5 +119,5 @@ const MylistScreen = () => {
 
 
 
-  
-export default MylistScreen;  
+
+export default MylistScreen;

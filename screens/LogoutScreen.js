@@ -8,7 +8,7 @@ export default function LogoutScreen(props) {
 
     const logout=()=>{
         myContext.logout();
-        props.navigation.navigate(" ");
+        props.navigation.navigate("Middle");
     }
 
     return (
