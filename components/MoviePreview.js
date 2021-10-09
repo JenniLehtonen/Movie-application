@@ -2,13 +2,13 @@
 import {View, Text, TouchableOpacity, Image} from 'react-native';
 import styles from '../styles/SearchScreenStyle';
 import { useNavigation } from '@react-navigation/native';
-import React, {useState, useEffect} from 'react';
-
+import React, {useState, useEffect, useContext} from 'react';
+import AppContext from '../components/AppContext';
 
 const MoviePreview = (props) => {
     const [movieList, setMovieList] = useState([]);
 
-import AppContext from '../components/AppContext';
+
 
 
   const myContext = useContext(AppContext);
@@ -114,8 +114,10 @@ import AppContext from '../components/AppContext';
 
         });
       
-    const responseData = await response.json();
-    console.log(responseData);
+        const responseData = await response.json();
+        console.log(responseData);
+        setMovieList(movieList=>[...movieList, responseData]);
+          }
 
     if (responseData.result == true) {
       Alert.alert(
@@ -132,7 +134,7 @@ import AppContext from '../components/AppContext';
         ]
       );
     }
-  }
+  
 
     
     return (
