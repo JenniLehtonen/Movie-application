@@ -18,7 +18,7 @@ const MoviesByCategoryScreen = ({route}) => {
   const [movies, setMovies] = useState();
   
 
-  const searchUrl = "https://api.themoviedb.org/3/discover/movie?api_key=68f7aed1b2f4271575d8bd561ee17fba&language=en-US&sort_by=popularity.desc&include_adult=false&include_video=false&page=1&with_genres="+id;>>>>>>> main
+  const searchUrl = "https://api.themoviedb.org/3/discover/movie?api_key=68f7aed1b2f4271575d8bd561ee17fba&language=en-US&sort_by=popularity.desc&include_adult=false&include_video=false&page=1&with_genres="+id;
 
   const timeOut = () => {
   //Hide the ActivityIndicator after the specified time

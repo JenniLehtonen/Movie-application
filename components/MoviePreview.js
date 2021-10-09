@@ -1,4 +1,3 @@
-import React, { useContext } from 'react';
 import { View, Text, TouchableOpacity, Image, Alert } from 'react-native';
 import styles from '../styles/SearchScreenStyle';
 import { useNavigation } from '@react-navigation/native';
@@ -13,9 +12,6 @@ const MoviePreview = (props) => {
 
   const myContext = useContext(AppContext);
 
-
-  //For navigating to DetailScreen
-  const navigation = useNavigation();
 
   //For navigating to DetailScreen
   const navigation = useNavigation();

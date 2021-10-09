@@ -112,7 +112,8 @@ const MylistScreen = () => {
                 </View>
             )}
             
-            
+            keyExtractor={item => item.id.toString()}
+
         />
         
       </View>
