@@ -121,7 +121,7 @@ const MoviePreview = (props) => {
     console.log(json);
 
 
-    const response = await fetch("http://10.0.2.2:8080/rest/movieservice/addjsonmovie",
+    const response = await fetch("http://10.0.2.2:8080/rest/movieservice/addsojnmovie/",
       {
         method: 'POST',
         headers: {
@@ -140,26 +140,27 @@ const MoviePreview = (props) => {
     console.log(responseData);
 
     setMovieList(movieList => [...movieList, responseData]);
-  }
-
-  if (responseData.result == true) {
-    Alert.alert(
-      "Success",
-      props.name + "has been added to your list.",
-      [
+   /* if (responseData.result == true) {
+      Alert.alert(
+        "Success",
+        props.name + "has been added to your list.",
+        [
+          { text: "OK" }
+        ]
+      );
+    } else {
+      Alert.alert(
+        "Failure",
+        "List was not updated."
+        [
         { text: "OK" }
-      ]
-    );
-  } else {
-    Alert.alert(
-      "Failure",
-      "List was not updated."
-      [
-      { text: "OK" }
-      ]
-    );
+        ]
+      );
+    }*/
+  
   }
 
+  
 
 
   return (

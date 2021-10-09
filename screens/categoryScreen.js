@@ -13,7 +13,7 @@ const CategoryScreen = () => {
 
 
 
-  const searchUrl = "https://api.themoviedb.org/3/genre/movie/list?api_key=68f7aed1b2f4271575d8bd561ee17fba&language=en-US";
+  const searchUrl = "https://api.themoviedb.org/3/genre/movie/list?api_key=e25210b6bbfca7fe71b09ec050cd892b&language=en-US";
 
 
   useEffect(() => { 
