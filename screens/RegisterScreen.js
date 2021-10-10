@@ -38,7 +38,7 @@ export default function RegisterScreen(props) {
 
     async function addUser() {
 
-        const response = await fetch("http://10.0.2.2:8080/rest/userservice/addjsonuser",
+        const response = await fetch("https://moviefy-328609.ew.r.appspot.com/rest/userservice/addjsonuser",
             {
                 method: 'POST',
                 headers: {

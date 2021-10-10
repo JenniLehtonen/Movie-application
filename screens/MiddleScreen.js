@@ -3,22 +3,36 @@ import { View, Text } from 'react-native';
 
 import AppContext from '../components/AppContext';
 
-export default function HomeScreen(props) {
+export default function MiddleScreen(props) {
   const myContext = useContext(AppContext);
 
-useEffect(()=>{
+  useEffect(() => {
     if (myContext.isLoggedIn) {
-        props.navigation.navigate("Home page");
-      } else {
-        props.navigation.navigate("Login");
-      }
-});
+      props.navigation.navigate("Home page");
+    } else {
+      props.navigation.navigate("Login");
+    }
+  });
 
-    return (
-      <View style={{ flex: 1, alignItems: 'center', justifyContent: 'center' }}>
-          <Text>This is the middle screen.</Text>
-          <Text>You are not supposed to see this.</Text>
-
+  return (
+    <View style={styles.screen}>
+      <View style={styles.screen2}>
+        <Image source={require('../assets/moviefy-logo.jpg')} />
       </View>
-    );
-  }
+    </View >
+  );
+}
+
+const styles = StyleSheet.create({
+  screen: {
+    padding: 20,
+    paddingTop: 50,
+    backgroundColor: '#1F1C2C',
+    height: '100%',
+  },
+  screen2: {
+    flex: 1,
+    alignItems: 'center',
+    justifyContent: 'center',
+  },
+});

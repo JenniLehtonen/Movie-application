@@ -41,7 +41,7 @@ export default function LoginScreen(props) {
 
     async function loginUser() {
 
-        const response = await fetch("http://10.0.2.2:8080/rest/userservice/loginjsonuser",
+        const response = await fetch("https://moviefy-328609.ew.r.appspot.com/rest/userservice/loginjsonuser",
             {
                 method: 'POST',
                 headers: {
@@ -53,13 +53,6 @@ export default function LoginScreen(props) {
         const responseData = await response.json();
 
         if (responseData.result == true) {
-            Alert.alert(
-                "Success",
-                "You have successfully logged in.",
-                [
-                    { text: "OK" }
-                ]
-            );
             updateLogin();
             myContext.setName(newUser);
             props.navigation.navigate("Middle");

@@ -2,7 +2,6 @@ import React, { useContext, useState, useEffect } from 'react';
 import { View, Text, FlatList, Image, TouchableOpacity } from 'react-native';
 import styles from '../styles/HomeScreenStyles';
 import { useNavigation } from '@react-navigation/native';
-import MylistScreen from '../screens/MylistScreen';
 import AppContext from '../components/AppContext';
 
 
