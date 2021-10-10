@@ -24,6 +24,10 @@ const HomeScreen = () => {
   const searchUrl = "https://api.themoviedb.org/3/genre/movie/list?api_key=e25210b6bbfca7fe71b09ec050cd892b&language=en-US";
   const [mylist, setMylist] = useState();
 
+  const gToMyList = () => {
+    navigation.navigate("My List");
+  }
+
   async function fetchData() {
 
     let res = null;
@@ -67,7 +71,10 @@ const HomeScreen = () => {
       <Image style={{ marginBottom: 70, marginTop: 70 }} source={require('../assets/moviefy-logo.jpg')} />
 
       <View style={{ width: '100%', marginBottom: 20 }}>
-        <Text style={styles.headers}>Your list</Text>
+        <TouchableOpacity style={styles.categoryItem} onPress={goToMyList}>
+
+          <Text style={styles.headers}>Your list</Text>
+        </TouchableOpacity>
         {mylist ?
           <FlatList
             horizontal
@@ -83,7 +90,7 @@ const HomeScreen = () => {
 
           />
           :
-          <Text style={{color:'white', fontWeight:'bold'}}>Your list is empty.</Text>
+          <Text style={{ color: 'white', fontWeight: 'bold' }}>Your list is empty.</Text>
         }
       </View>
       <View style={{ width: '100%' }}>
