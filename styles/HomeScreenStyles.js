@@ -5,6 +5,7 @@ export default StyleSheet.create({
         height: '100%',
         backgroundColor: '#1F1C2C',
         padding: 20,
+        paddingTop: 40,
         alignItems: 'center'
       },
       textStyle: {
@@ -34,7 +35,7 @@ export default StyleSheet.create({
         backgroundColor: 'gray',
         opacity: 0.8,
         borderRadius: 10,
-        width: '80%',
+        width: '90%',
         height: '30%'
       },
       resultImage: {

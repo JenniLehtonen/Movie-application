@@ -7,11 +7,7 @@ import AppContext from '../components/AppContext';
 const MoviePreview = (props) => {
   const [movieList, setMovieList] = useState([]);
 
-
-
-
   const myContext = useContext(AppContext);
-
 
   //For navigating to DetailScreen
   const navigation = useNavigation();
@@ -120,7 +116,6 @@ const MoviePreview = (props) => {
 
     console.log(json);
 
-
     const response = await fetch("https://moviefy-328609.ew.r.appspot.com/rest/movieservice/addjsonmovie/",
       {
         method: 'POST',
@@ -160,9 +155,6 @@ const MoviePreview = (props) => {
   
   }
 
-  
-
-
   return (
 
     <View style={styles.resultContainer}>
@@ -184,7 +176,7 @@ const MoviePreview = (props) => {
           </View>
           <View style={styles.resultInfoButtonView}>
             <TouchableOpacity style={styles.resultButtonStyle}
-              onPress={() => navigation.navigate('DetailScreen', { name: props.name, image: props.image, language: capitalizedLanguage, releaseDate: release_date, genre: movieGenre, description: props.description })}>
+              onPress={() => navigation.navigate('DetailScreen', { name: props.name, image: props.image, language: capitalizedLanguage, releaseDate: release_date, genre: movieGenre, description: props.description, searchByGenre: props.searchByGenre })}>
               <View style={{ backgroundColor: 'white', height: 25, width: 25, borderRadius: 100, justifyContent: 'center', alignItems: 'center' }}>
                 <Image source={require('../assets/play.png')} style={styles.resultImageInfo} />
               </View>

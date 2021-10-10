@@ -1,22 +1,14 @@
-import React, { useContext, useEffect, useState } from 'react';
-import { View, Text, StyleSheet, Image } from 'react-native';
+import React, { useContext, useEffect } from 'react';
+import { View, Image, StyleSheet } from 'react-native';
 
 import AppContext from '../components/AppContext';
 
 export default function MiddleScreen(props) {
   const myContext = useContext(AppContext);
 
-
-  const timeout = (ms) => { //pass a time in milliseconds to this function
-    return new Promise(resolve => setTimeout(resolve, ms));
-  }
-
   useEffect(() => {
     if (myContext.isLoggedIn) {
-      setTimeout(() => {
-        props.navigation.navigate("Home page");
-      }, 2000);
-
+      props.navigation.navigate("Home page");
     } else {
       props.navigation.navigate("Login");
     }

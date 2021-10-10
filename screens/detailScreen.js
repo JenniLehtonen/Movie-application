@@ -16,6 +16,7 @@ const {language} = route.params;
 const {releaseDate} = route.params;
 const {genre} = route.params;
 const {description} = route.params;
+const {searchByGenre} = route.params;
 
 const toggle = () => {
   props.navigation.toggleDrawer();
@@ -30,9 +31,17 @@ const toggle = () => {
       </View>
       <View style={styles.buttonView}>
         <View style={styles.goBackBtnView}>
-          <TouchableOpacity style={styles.ButtonStyle} onPress={() => navigation.navigate('Search movie')}>
+          {
+            searchByGenre == true ?
+            <TouchableOpacity style={styles.ButtonStyle} onPress={() => navigation.goBack()}>
               <Image source={require('../assets/arrow.png')} style={styles.ImageAdd}/>
-          </TouchableOpacity>
+            </TouchableOpacity>
+            :
+            <TouchableOpacity style={styles.ButtonStyle} onPress={() => navigation.navigate('Search movie')}>
+              <Image source={require('../assets/arrow.png')} style={styles.ImageAdd}/>
+            </TouchableOpacity>
+          }
+
         </View>
         <View style={styles.addButtonView}>
           <TouchableOpacity style={styles.ButtonStyle}>
