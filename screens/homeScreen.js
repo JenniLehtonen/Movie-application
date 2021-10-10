@@ -67,7 +67,7 @@ const HomeScreen = (props) => {
 
   return (
     <View style={styles.container}>
-      <View style={{width:'100%', paddingTop:20, paddingLeft:20}}>
+      <View style={{width:'100%', paddingTop:20}}>
       <TouchableOpacity onPress={toggle}>
         <Image source={require('../assets/hamburger-menu-icon.png')} style={{ width: 20, height: 20 }} />
       </TouchableOpacity>

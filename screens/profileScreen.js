@@ -46,7 +46,7 @@ export default function ProfileScreen(props) {
 
   return (
     <View style={styles.screen}>
-      <View style={{ width: '100%', paddingTop: 20, paddingLeft: 20 }}>
+      <View style={{ width: '100%', paddingTop: 20, marginBottom:30 }}>
         <TouchableOpacity onPress={toggle}>
           <Image source={require('../assets/hamburger-menu-icon.png')} style={{ width: 20, height: 20 }} />
         </TouchableOpacity>
@@ -68,8 +68,7 @@ export default function ProfileScreen(props) {
 
 const styles = StyleSheet.create({
   screen: {
-    padding: 20,
-    paddingTop: 50,
+    padding:20,
     backgroundColor: '#1F1C2C',
     height: '100%',
   },

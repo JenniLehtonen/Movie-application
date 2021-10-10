@@ -84,13 +84,15 @@ const MylistScreen = (props) => {
 
   else {
     return (
+      
       <View style={styles.container}>
-        <View style={{ width: '100%', paddingTop: 20, paddingLeft: 20 }}>
+        <View style={{ width: '100%', paddingTop: 20 }}>
           <TouchableOpacity onPress={toggle}>
             <Image source={require('../assets/hamburger-menu-icon.png')} style={{ width: 20, height: 20 }} />
           </TouchableOpacity>
         </View>
         <Text>{hasError}</Text>
+        <Text style={styles.textStyle}>My list</Text>
 
         <TouchableOpacity activeOpacity={0.8} style={styles.button} onPress={fetchData}>
           <Text style={styles.buttonText}>Reload list</Text>
