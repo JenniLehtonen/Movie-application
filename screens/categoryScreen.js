@@ -11,10 +11,7 @@ const CategoryScreen = () => {
   //API search result
   const [categories, setCategories] = useState();
 
-
-
   const searchUrl = "https://api.themoviedb.org/3/genre/movie/list?api_key=e25210b6bbfca7fe71b09ec050cd892b&language=en-US";
-
 
   useEffect(() => { 
     //Fetch categories from the API and save them to state
@@ -30,12 +27,12 @@ const CategoryScreen = () => {
         data={categories}
         renderItem={category => (
           <View style={styles.categoryBox}>
-                <Text style={styles.categoryTitle}>{category.item.name}</Text>
-                <TouchableOpacity style={styles.categoryButtonStyle} onPress={() => navigation.navigate('MoviesByCategoryScreen', {id:category.item.id, category:category.item.name})}>
-                    <View style={{backgroundColor: 'white', height: 25, width: 25, borderRadius: 100, justifyContent: 'center', alignItems: 'center'}}>
-                        <Image source={require('../assets/play.png')} style={styles.categoryImageButton}/>
-                    </View>
-                    </TouchableOpacity>
+            <Text style={styles.categoryTitle}>{category.item.name}</Text>
+            <TouchableOpacity style={styles.categoryButtonStyle} onPress={() => navigation.navigate('MoviesByCategoryScreen', {id:category.item.id, category:category.item.name})}>
+              <View style={{backgroundColor: 'white', height: 25, width: 25, borderRadius: 100, justifyContent: 'center', alignItems: 'center'}}>
+                  <Image source={require('../assets/play.png')} style={styles.categoryImageButton}/>
+              </View>
+            </TouchableOpacity>
           </View> 
         )}
         />
@@ -43,6 +40,5 @@ const CategoryScreen = () => {
       </View>
     );
   }
-
 
   export default CategoryScreen;
