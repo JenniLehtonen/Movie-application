@@ -41,7 +41,6 @@ const toggle = () => {
               <Image source={require('../assets/arrow.png')} style={styles.ImageAdd}/>
             </TouchableOpacity>
           }
-
         </View>
         <View style={styles.addButtonView}>
           <TouchableOpacity style={styles.ButtonStyle}>

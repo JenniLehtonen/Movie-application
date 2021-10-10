@@ -1,7 +1,7 @@
 import { View, Text, TouchableOpacity, Image, Alert } from 'react-native';
 import styles from '../styles/SearchScreenStyle';
 import { useNavigation } from '@react-navigation/native';
-import React, { useState, useEffect, useContext } from 'react';
+import React, { useState, useContext } from 'react';
 import AppContext from '../components/AppContext';
 
 const MoviePreview = (props) => {

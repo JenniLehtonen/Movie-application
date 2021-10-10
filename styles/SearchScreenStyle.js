@@ -96,7 +96,6 @@ export default StyleSheet.create({
     fontWeight: 'bold',
     color: 'white',
   },
-
   resultDetails: {
     fontSize: 18,
     color: '#98979A'

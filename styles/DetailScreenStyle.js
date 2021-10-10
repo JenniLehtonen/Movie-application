@@ -18,7 +18,7 @@ export default StyleSheet.create({
     },
     //For ScrollView
     ScrollViewStyle: {
-      height: 170
+      height: 155
     },
     //For go back and add to list buttons
     buttonView: {
@@ -62,7 +62,7 @@ export default StyleSheet.create({
       color: 'white',
       fontWeight: 'bold',
       fontSize: 16,
-      marginTop: 10,
+      marginTop: 5,
       marginBottom: 10
     },
     detailsStyle: {

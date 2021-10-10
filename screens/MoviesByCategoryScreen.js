@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react';
-import { View, Text, FlatList, ActivityIndicator } from 'react-native';
+import { View, Text, FlatList, ActivityIndicator, TouchableOpacity, Image } from 'react-native';
 import styles from '../styles/CategoryScreenStyle';
 import MoviePreview from '../components/MoviePreview';
 
