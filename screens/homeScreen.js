@@ -67,7 +67,7 @@ const HomeScreen = (props) => {
 
   return (
     <View style={styles.container}>
-      <View style={{width:'100%', paddingTop:20}}>
+      <View style={{width:'100%'}}>
       <TouchableOpacity onPress={toggle}>
         <Image source={require('../assets/hamburger-menu-icon.png')} style={{ width: 20, height: 20 }} />
       </TouchableOpacity>
@@ -76,9 +76,14 @@ const HomeScreen = (props) => {
       <Image style={{ marginBottom: 70, marginTop: 50 }} source={require('../assets/moviefy-logo.jpg')} />
 
       <View style={{ width: '100%', marginBottom: 20 }}>
+        <View style={{flexDirection:'row'}}>
         <TouchableOpacity onPress={goToMyList}>
           <Text style={styles.headers}>Your list</Text>
         </TouchableOpacity>
+        <TouchableOpacity activeOpacity={0.8} style={styles.button} onPress={fetchData}>
+          <Text style={styles.buttonText}>Reload</Text>
+        </TouchableOpacity>
+        </View>
         {mylist ?
           <FlatList
             horizontal

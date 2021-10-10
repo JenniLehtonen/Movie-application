@@ -44,4 +44,18 @@ export default StyleSheet.create({
         borderRadius: 20,
         marginRight:10,
       },
+      button: {
+        padding: 0,
+        backgroundColor: '#FDAC33',
+        borderRadius: 10,
+        width: '20%',
+        marginTop:5,
+        marginLeft: 20,
+        marginBottom: 20,
+
+      },
+      buttonText: {
+        color: 'white',
+        textAlign: 'center',
+      },
 })
