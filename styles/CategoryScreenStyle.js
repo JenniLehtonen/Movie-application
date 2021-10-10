@@ -5,6 +5,7 @@ export default StyleSheet.create({
         flex: 1,
         backgroundColor: '#1F1C2C',
         paddingTop: 20,
+        paddingBottom: 10,
         alignItems: 'center'
       },
       textStyle: {

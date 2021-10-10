@@ -17,18 +17,19 @@ export default StyleSheet.create({
         color: 'white',
         fontWeight: 'bold',
         fontSize: 20,
+        marginTop: 20,
         marginBottom: 20
       },
       categoryItem: {
-        height: 90,
-        width: 90,
+        height: 105,
+        width: 105,
         borderRadius: 20,
         marginRight: 10,
-        backgroundColor: 'lightblue',
-        alignItems: 'center'
+        alignItems: 'center',
+        overflow: 'hidden'
       },
       categoryNameContainer: {
-        marginTop: '60%',
+        marginTop: '40%',
         justifyContent: 'center',
         alignItems: 'center',
         backgroundColor: 'gray',

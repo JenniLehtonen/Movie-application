@@ -44,11 +44,11 @@ export default function App() {
         <NavigationContainer>
           <Drawer.Navigator initialRouteName="Home page">
 
-            <Drawer.Screen name="Home page" options={{ headerShown: false }}>
+            <Drawer.Screen name="Home page" options={{ headerShown:false }}>
               {props => <HomeScreen {...props} extraData={"extra"} />}
             </Drawer.Screen>
 
-            <Drawer.Screen name="Search movie" options={{ headerShown: false }}>
+            <Drawer.Screen name="Search movie" options={{ headerShown:false }}>
               {props => <SearchScreen {...props} />}
             </Drawer.Screen>
 
@@ -64,12 +64,12 @@ export default function App() {
               {props => <CategoryScreen {...props} extraData={"extra"} />}
             </Drawer.Screen>
 
-            <Drawer.Screen name="DetailScreen" options={{ headerShown: false }}>
+            <Drawer.Screen name="DetailScreen" options={{ headerShown:false, drawerItemStyle:{height:0}}}>
               {props => <DetailScreen {...props} />}
             </Drawer.Screen>
 
-            <Drawer.Screen name="MoviesByCategoryScreen" >
-              {props => <MoviesByCategoryScreen {...props} extraData={"extra"} />}
+            <Drawer.Screen name="MoviesByCategoryScreen" options={{ headerShown:false, drawerItemStyle:{height:0}}}>
+              {props => <MoviesByCategoryScreen {...props} />}
             </Drawer.Screen>
 
             <Drawer.Screen name="Logout">
