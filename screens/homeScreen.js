@@ -24,7 +24,7 @@ const HomeScreen = () => {
   const searchUrl = "https://api.themoviedb.org/3/genre/movie/list?api_key=e25210b6bbfca7fe71b09ec050cd892b&language=en-US";
   const [mylist, setMylist] = useState();
 
-  const gToMyList = () => {
+  const goToMyList = () => {
     navigation.navigate("My List");
   }
 
@@ -71,8 +71,7 @@ const HomeScreen = () => {
       <Image style={{ marginBottom: 70, marginTop: 70 }} source={require('../assets/moviefy-logo.jpg')} />
 
       <View style={{ width: '100%', marginBottom: 20 }}>
-        <TouchableOpacity style={styles.categoryItem} onPress={goToMyList}>
-
+        <TouchableOpacity onPress={goToMyList}>
           <Text style={styles.headers}>Your list</Text>
         </TouchableOpacity>
         {mylist ?
