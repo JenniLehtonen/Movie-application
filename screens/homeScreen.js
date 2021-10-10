@@ -1,10 +1,8 @@
 import React, { useContext, useState, useEffect } from 'react';
-import { View, Text, FlatList, Image, TouchableOpacity } from 'react-native';
+import { View, Text, FlatList, Image, TouchableOpacity, TouchableHighlight, ImageBackground } from 'react-native';
 import styles from '../styles/HomeScreenStyles';
 import { useNavigation } from '@react-navigation/native';
 import AppContext from '../components/AppContext';
-
-
 
 const HomeScreen = () => {
   const myContext = useContext(AppContext);
@@ -51,7 +49,6 @@ const HomeScreen = () => {
     }
   }
 
-
   useEffect(() => {
     //Fetch categories from the API and save them to state
     fetchData();
@@ -78,14 +75,9 @@ const HomeScreen = () => {
             horizontal
             data={mylist}
             renderItem={({ item }) => (
-
               <Image source={{ uri: item.image }} style={styles.resultImage} />
-
-
             )}
-
             keyExtractor={item => item.id.toString()}
-
           />
           :
           <Text style={{ color: 'white', fontWeight: 'bold' }}>Your list is empty.</Text>
@@ -96,12 +88,16 @@ const HomeScreen = () => {
         <FlatList
           horizontal
           data={categories}
-          renderItem={category => (
-            <TouchableOpacity style={styles.categoryItem} onPress={() => navigation.navigate('MoviesByCategoryScreen', { id: category.item.id, category: category.item.name })}>
-              <View style={styles.categoryNameContainer}>
-                <Text style={{ color: 'white', fontWeight: 'bold', }}>{category.item.name}</Text>
+            renderItem={category => (
+              <View style={styles.categoryItem}>
+                <ImageBackground source={require('../assets/genreBackground.jpg')} style={{flex:1, width:'100%', height:'100%'}} resizeMode="cover">
+                  <TouchableHighlight key={keyValue++} underlayColor="orange" style={styles.categoryItem} onPress={() => navigation.navigate('MoviesByCategoryScreen', {id:category.item.id, category:category.item.name})}>
+                    <View style={styles.categoryNameContainer}>
+                      <Text style={{color: 'white', fontWeight: 'bold'}}>{category.item.name}</Text>
+                    </View>
+                  </TouchableHighlight> 
+                </ImageBackground>
               </View>
-            </TouchableOpacity>
           )}
           keyExtractor={item => item.id.toString()}
         />

@@ -20,15 +20,15 @@ export default StyleSheet.create({
         marginBottom: 20
       },
       categoryItem: {
-        height: 100,
-        width: 100,
+        height: 105,
+        width: 105,
         borderRadius: 20,
         marginRight: 10,
-        backgroundColor: 'lightblue',
-        alignItems: 'center'
+        alignItems: 'center',
+        overflow: 'hidden'
       },
       categoryNameContainer: {
-        marginTop: '60%',
+        marginTop: '40%',
         justifyContent: 'center',
         alignItems: 'center',
         backgroundColor: 'gray',
