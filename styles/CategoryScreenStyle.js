@@ -5,7 +5,7 @@ export default StyleSheet.create({
         flex: 1,
         backgroundColor: '#1F1C2C',
         paddingTop: 20,
-        paddingBottom: 10,
+        paddingBottom: 60,
         alignItems: 'center'
       },
       textStyle: {
@@ -17,7 +17,8 @@ export default StyleSheet.create({
       categoryTitle: {
         fontSize: 18,
         fontWeight: 'bold',
-        color: 'white'
+        color: 'white',
+        marginBottom: 20
       },
       categoryBox: {
         flexDirection: 'row',

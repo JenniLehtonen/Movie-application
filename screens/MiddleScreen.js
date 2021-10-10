@@ -1,5 +1,5 @@
 import React, { useContext, useEffect } from 'react';
-import { View, Text } from 'react-native';
+import { View, Image, StyleSheet } from 'react-native';
 
 import AppContext from '../components/AppContext';
 

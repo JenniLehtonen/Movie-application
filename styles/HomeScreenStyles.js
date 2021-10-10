@@ -5,6 +5,7 @@ export default StyleSheet.create({
         height: '100%',
         backgroundColor: '#1F1C2C',
         padding: 20,
+        paddingTop: 40,
         alignItems: 'center'
       },
       textStyle: {

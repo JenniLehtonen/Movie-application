@@ -64,7 +64,7 @@ const HomeScreen = () => {
   return (
     <View style={styles.container}>
       <Text style={styles.textStyle}>Welcome, {myContext.name}</Text>
-      <Image style={{ marginBottom: 70, marginTop: 70 }} source={require('../assets/moviefy-logo.jpg')} />
+      <Image style={{ marginBottom: 70, marginTop: 50 }} source={require('../assets/moviefy-logo.jpg')} />
 
       <View style={{ width: '100%', marginBottom: 20 }}>
         <TouchableOpacity onPress={goToMyList}>
