@@ -2,49 +2,105 @@ import React, { useContext, useState, useEffect } from 'react';
 import { View, Text, FlatList, Image, TouchableOpacity } from 'react-native';
 import styles from '../styles/HomeScreenStyles';
 import { useNavigation } from '@react-navigation/native';
-
+import MylistScreen from '../screens/MylistScreen';
 import AppContext from '../components/AppContext';
+
+
 
 const HomeScreen = () => {
   const myContext = useContext(AppContext);
-
+  const [hasError, setErrors] = useState(false);
+  const [someErrors, setSomeErrors] = useState('');
+  const [isLoading, setLoading] = useState(true);
   //For giving the key in the FlatList
   let keyValue = 1;
 
-   //For navigating to MoviesByCategoryScreen
-   const navigation = useNavigation();
+  //For navigating to MoviesByCategoryScreen
+  const navigation = useNavigation();
 
   //API search result
   const [categories, setCategories] = useState();
 
   const searchUrl = "https://api.themoviedb.org/3/genre/movie/list?api_key=e25210b6bbfca7fe71b09ec050cd892b&language=en-US";
+  const [mylist, setMylist] = useState();
 
-  useEffect(() => { 
+  async function fetchData() {
+
+    let res = null;
+    try {
+
+      res = await fetch("http://10.0.2.2:8080/rest/movieservice/getlist/" + myContext.name);
+    }
+    catch (error) {
+      setErrors(true);
+    }
+
+    try {
+      //Getting json from the response
+      const responseData = await res.json();
+      console.log(responseData);
+      setMylist(responseData);
+    }
+    catch (err) {
+      setErrors(true);
+      setSomeErrors("ERROR: " + hasError + " my error " + err);
+      console.log(someErrors);
+    }
+  }
+
+
+  useEffect(() => {
     //Fetch categories from the API and save them to state
+    fetchData();
     fetch(searchUrl)
-    .then((res) => res.json())
-    .then((data) => setCategories(data.genres));
+      .then((res) => res.json())
+      .then((data) => setCategories(data.genres));
+
+    if (isLoading == true) {
+      setLoading(false);
+    }
   }, [searchUrl]);
 
-    return (
-      <View style={styles.container}>
-          <Text style={styles.textStyle}>Welcome, {myContext.name}</Text>
-          <Image style={{marginBottom: 20}} source={require('../assets/moviefy-logo.jpg')}/>
-          <View>
-            <Text style={styles.headers}>Categories</Text>
-            <FlatList
+  return (
+    <View style={styles.container}>
+      <Text style={styles.textStyle}>Welcome, {myContext.name}</Text>
+      <Image style={{ marginBottom: 70, marginTop: 70 }} source={require('../assets/moviefy-logo.jpg')} />
+
+      <View style={{ width: '100%', marginBottom: 20 }}>
+        <Text style={styles.headers}>Your list</Text>
+        {mylist ?
+          <FlatList
             horizontal
-              data={categories}
-              renderItem={category => (
-              <TouchableOpacity style={styles.categoryItem} onPress={() => navigation.navigate('MoviesByCategoryScreen', {id:category.item.id, category:category.item.name})}>
-                <View style={styles.categoryNameContainer}>
-                  <Text style={{color: 'white', fontWeight: 'bold',}}>{category.item.name}</Text>
-                </View>
-              </TouchableOpacity> 
+            data={mylist}
+            renderItem={({ item }) => (
+
+              <Image source={{ uri: item.image }} style={styles.resultImage} />
+
+
             )}
-            />
-          </View>
+
+            keyExtractor={item => item.id.toString()}
+
+          />
+          :
+          <Text style={{color:'white', fontWeight:'bold'}}>Your list is empty.</Text>
+        }
       </View>
-    );
-  }
-  export default HomeScreen;
+      <View style={{ width: '100%' }}>
+        <Text style={styles.headers}>Categories</Text>
+        <FlatList
+          horizontal
+          data={categories}
+          renderItem={category => (
+            <TouchableOpacity style={styles.categoryItem} onPress={() => navigation.navigate('MoviesByCategoryScreen', { id: category.item.id, category: category.item.name })}>
+              <View style={styles.categoryNameContainer}>
+                <Text style={{ color: 'white', fontWeight: 'bold', }}>{category.item.name}</Text>
+              </View>
+            </TouchableOpacity>
+          )}
+        />
+      </View>
+    </View>
+  );
+}
+export default HomeScreen;

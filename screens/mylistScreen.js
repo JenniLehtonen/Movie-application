@@ -17,11 +17,11 @@ const MylistScreen = () => {
   const myContext = useContext(AppContext);
 
 
-  const deleteMovie = async (id) =>{
-    const response = await fetch ("http://10.0.2.2:3000/api/persons/"+id,
-    {
-      method:'DELETE',
-    });
+  const deleteMovie = async (id) => {
+    const response = await fetch("http://10.0.2.2:8080/rest/movieservice/deletemovie/" + id,
+      {
+        method: 'DELETE',
+      });
     fetchData();
   }
 
@@ -59,6 +59,8 @@ const MylistScreen = () => {
   });
 
 
+
+
   if (isLoading == true) {
     return (
       <View style={{ flex: 1, padding: 20, justifyContent: 'center' }}>
@@ -85,37 +87,42 @@ const MylistScreen = () => {
           <Text style={styles.buttonText}>Reload list</Text>
         </TouchableOpacity>
 
-        <FlatList
+        {movies ?
+          <FlatList
 
-            
+
             data={movies}
-            
-            renderItem={({item}) => (
+
+            renderItem={({ item }) => (
               <View style={styles.resultContainer}>
-              <View style={styles.resultBox}>
-                <View style={styles.resultImageView}>
-                  
-                <Image source={item.image} style={styles.resultImage}/>
-                </View>
-              <View style={styles.resultTextView}>
-                 <Text style={styles.resultTitle}>{item.name}</Text>
-                <View >
-                
-                <Button style={styles.resultButtonStyle} title="Remove" onPress={()=>deleteMovie(item.id)}/>
-                
-                </View>
-                
-                </View>
+                <View style={styles.resultBox}>
+                  <View style={styles.resultImageView}>
+
+                    <Image source={{ uri: item.image }} style={styles.resultImage} />
+                  </View>
+                  <View style={styles.resultTextView}>
+                    <Text style={styles.resultTitle}>{item.name}</Text>
+                    <View style={styles.removeButtonView}>
+
+                      <TouchableOpacity activeOpacity={0.8} style={styles.removeButton} onPress={()=>deleteMovie(item.id)}>
+                        <Text style={styles.buttonText}>Remove</Text>
+                      </TouchableOpacity>
+
+                    </View>
+
+                  </View>
 
                 </View>
-          
-                </View>
+
+              </View>
             )}
-            
+
             keyExtractor={item => item.id.toString()}
 
-        />
-        
+          />
+          :
+          <Text style={{ color: 'white', fontWeight: 'bold' }}>Your list is empty.</Text>
+        }
       </View>
     );
   }

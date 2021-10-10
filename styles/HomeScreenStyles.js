@@ -20,8 +20,8 @@ export default StyleSheet.create({
         marginBottom: 20
       },
       categoryItem: {
-        height: 90,
-        width: 90,
+        height: 100,
+        width: 100,
         borderRadius: 20,
         marginRight: 10,
         backgroundColor: 'lightblue',
@@ -36,5 +36,11 @@ export default StyleSheet.create({
         borderRadius: 10,
         width: '80%',
         height: '30%'
-      }
+      },
+      resultImage: {
+        height: 100,
+        width: 100,
+        borderRadius: 20,
+        marginRight:10,
+      },
 })
