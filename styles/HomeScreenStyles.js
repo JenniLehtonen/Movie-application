@@ -35,7 +35,7 @@ export default StyleSheet.create({
         backgroundColor: 'gray',
         opacity: 0.8,
         borderRadius: 10,
-        width: '80%',
+        width: '90%',
         height: '30%'
       },
       resultImage: {

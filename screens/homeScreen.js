@@ -75,7 +75,7 @@ const HomeScreen = () => {
             horizontal
             data={mylist}
             renderItem={({ item }) => (
-              <Image source={{ uri: item.image }} style={styles.resultImage} />
+                <Image source={{ uri: item.image }} style={styles.resultImage} />
             )}
             keyExtractor={item => item.id.toString()}
           />
@@ -93,7 +93,12 @@ const HomeScreen = () => {
                 <ImageBackground source={require('../assets/genreBackground.jpg')} style={{flex:1, width:'100%', height:'100%'}} resizeMode="cover">
                   <TouchableHighlight key={keyValue++} underlayColor="orange" style={styles.categoryItem} onPress={() => navigation.navigate('MoviesByCategoryScreen', {id:category.item.id, category:category.item.name})}>
                     <View style={styles.categoryNameContainer}>
-                      <Text style={{color: 'white', fontWeight: 'bold'}}>{category.item.name}</Text>
+                      { category.item.name == "Science Fiction" ?
+                        <Text style={{color: 'white', fontWeight: 'bold'}}>Sci-Fi</Text>
+                        :
+                        <Text style={{color: 'white', fontWeight: 'bold'}}>{category.item.name}</Text>
+                      }
+                      
                     </View>
                   </TouchableHighlight> 
                 </ImageBackground>
