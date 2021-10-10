@@ -18,7 +18,7 @@ const MylistScreen = () => {
 
 
   const deleteMovie = async (id) => {
-    const response = await fetch("http://10.0.2.2:8080/rest/movieservice/deletemovie/" + id,
+    const response = await fetch("https://moviefy-328609.ew.r.appspot.com/rest/movieservice/deletemovie/" + id,
       {
         method: 'DELETE',
       });
@@ -30,7 +30,7 @@ const MylistScreen = () => {
     let res = null;
     try {
 
-      res = await fetch("http://10.0.2.2:8080/rest/movieservice/getlist/" + myContext.name);
+      res = await fetch("https://moviefy-328609.ew.r.appspot.com/rest/movieservice/getlist/" + myContext.name);
     }
     catch (error) {
       setErrors(true);
@@ -101,7 +101,7 @@ const MylistScreen = () => {
                     <Image source={{ uri: item.image }} style={styles.resultImage} />
                   </View>
                   <View style={styles.resultTextView}>
-                    <Text style={styles.resultTitle}>{item.name}</Text>
+                    <Text style={styles.listTitle}>{item.name}</Text>
                     <View style={styles.removeButtonView}>
 
                       <TouchableOpacity activeOpacity={0.8} style={styles.removeButton} onPress={()=>deleteMovie(item.id)}>

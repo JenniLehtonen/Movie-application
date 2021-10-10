@@ -95,8 +95,8 @@ export default StyleSheet.create({
     fontSize: 20,
     fontWeight: 'bold',
     color: 'white',
-    height:'65%',
   },
+
   resultDetails: {
     fontSize: 18,
     color: '#98979A'
@@ -133,6 +133,12 @@ export default StyleSheet.create({
   buttonText: {
     color: 'white',
     textAlign: 'center',
+  },
+  listTitle: {
+    fontSize: 20,
+    fontWeight: 'bold',
+    color: 'white',
+    height:'65%',
   },
   removeButtonView: {
     alignItems:'flex-end',

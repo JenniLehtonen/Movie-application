@@ -29,7 +29,7 @@ const HomeScreen = () => {
     let res = null;
     try {
 
-      res = await fetch("http://10.0.2.2:8080/rest/movieservice/getlist/" + myContext.name);
+      res = await fetch("https://moviefy-328609.ew.r.appspot.com/rest/movieservice/getlist/" + myContext.name);
     }
     catch (error) {
       setErrors(true);
@@ -98,6 +98,7 @@ const HomeScreen = () => {
               </View>
             </TouchableOpacity>
           )}
+          keyExtractor={item => item.id.toString()}
         />
       </View>
     </View>

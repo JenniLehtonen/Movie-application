@@ -121,7 +121,7 @@ const MoviePreview = (props) => {
     console.log(json);
 
 
-    const response = await fetch("http://10.0.2.2:8080/rest/movieservice/addjsonmovie/",
+    const response = await fetch("https://moviefy-328609.ew.r.appspot.com/rest/movieservice/addjsonmovie/",
       {
         method: 'POST',
         headers: {

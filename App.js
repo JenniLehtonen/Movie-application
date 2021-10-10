@@ -52,19 +52,19 @@ export default function App() {
               {props => <SearchScreen {...props} />}
             </Drawer.Screen>
 
-            <Drawer.Screen name="Profile">
+            <Drawer.Screen name="Profile" options={{ headerShown: false }}>
               {props => <ProfileScreen {...props} extraData={"extra"} />}
             </Drawer.Screen>
 
-            <Drawer.Screen name="My List">
+            <Drawer.Screen name="My List" options={{ headerShown: false }}>
               {props => <MylistScreen {...props} extraData={"extra"} />}
             </Drawer.Screen>
 
-            <Drawer.Screen name="Categories">
+            <Drawer.Screen name="Categories" options={{ headerShown: false }}>
               {props => <CategoryScreen {...props} extraData={"extra"} />}
             </Drawer.Screen>
 
-            <Drawer.Screen name="Logout">
+            <Drawer.Screen name="Logout" options={{ headerShown: false }}>
               {props => <LogoutScreen {...props} extraData={"extra"} />}
             </Drawer.Screen>
 

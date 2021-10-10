@@ -12,7 +12,7 @@ export default function ProfileScreen(props) {
 
   async function removeUser() {
     console.log("Removing user "+myContext.name);
-    const response = await fetch("http://10.0.2.2:8080/rest/userservice/deleteuser/"+myContext.name,
+    const response = await fetch("https://moviefy-328609.ew.r.appspot.com/rest/userservice/deleteuser/"+myContext.name,
       {
         method: 'DELETE'
       });
