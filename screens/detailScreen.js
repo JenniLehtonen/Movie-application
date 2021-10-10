@@ -4,7 +4,7 @@ import { useNavigation } from '@react-navigation/native';
 import Svg, { Path } from "react-native-svg"
 import styles from '../styles/DetailScreenStyle';
 
-const DetailScreen = ({route}) => {
+const DetailScreen = ({route}, props) => {
 
 //For navigating back to SearchScreen
 const navigation = useNavigation();
@@ -18,8 +18,17 @@ const {genre} = route.params;
 const {description} = route.params;
 const {searchByGenre} = route.params;
 
+const toggle = () => {
+  props.navigation.toggleDrawer();
+}
+
   return(
     <View style={styles.container}>
+      <View style={{width:'100%', paddingTop:20, paddingLeft:20}}>
+      <TouchableOpacity onPress={toggle}>
+        <Image source={require('../assets/hamburger-menu-icon.png')} style={{ width: 20, height: 20 }} />
+      </TouchableOpacity>
+      </View>
       <View style={styles.buttonView}>
         <View style={styles.goBackBtnView}>
           {

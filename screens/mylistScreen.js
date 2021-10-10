@@ -8,7 +8,7 @@ import AppContext from '../components/AppContext';
 
 
 //import { baseProps } from 'react-native-gesture-handler/lib/typescript/handlers/gestureHandlers';
-const MylistScreen = () => {
+const MylistScreen = (props) => {
   const [hasError, setErrors] = useState(false);
   const [someErrors, setSomeErrors] = useState('');
   const [movies, setMovies] = useState([]);
@@ -58,7 +58,9 @@ const MylistScreen = () => {
     }
   });
 
-
+  const toggle = () => {
+    props.navigation.toggleDrawer();
+  }
 
 
   if (isLoading == true) {
@@ -78,9 +80,16 @@ const MylistScreen = () => {
     );
   }
 
+  
+
   else {
     return (
       <View style={styles.container}>
+        <View style={{ width: '100%', paddingTop: 20, paddingLeft: 20 }}>
+          <TouchableOpacity onPress={toggle}>
+            <Image source={require('../assets/hamburger-menu-icon.png')} style={{ width: 20, height: 20 }} />
+          </TouchableOpacity>
+        </View>
         <Text>{hasError}</Text>
 
         <TouchableOpacity activeOpacity={0.8} style={styles.button} onPress={fetchData}>
@@ -104,7 +113,7 @@ const MylistScreen = () => {
                     <Text style={styles.listTitle}>{item.name}</Text>
                     <View style={styles.removeButtonView}>
 
-                      <TouchableOpacity activeOpacity={0.8} style={styles.removeButton} onPress={()=>deleteMovie(item.id)}>
+                      <TouchableOpacity activeOpacity={0.8} style={styles.removeButton} onPress={() => deleteMovie(item.id)}>
                         <Text style={styles.buttonText}>Remove</Text>
                       </TouchableOpacity>
 

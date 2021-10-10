@@ -1,9 +1,9 @@
 import React, { useState, useEffect } from 'react';
-import {View, Text, TextInput, TouchableOpacity, Image, FlatList} from 'react-native';
+import { View, Text, TextInput, TouchableOpacity, Image, FlatList } from 'react-native';
 import styles from '../styles/SearchScreenStyle';
 import MoviePreview from '../components/MoviePreview';
 
-const SearchScreen = () => {
+const SearchScreen = (props) => {
 
   //For giving the key in the FlatList
   let keyValue = 1;
@@ -21,50 +21,59 @@ const SearchScreen = () => {
   const textInputHandler = (enteredText) => {
 
     //Hide the search results
-    setShowMovies(false); 
+    setShowMovies(false);
 
     //Set the search URL with the user's search input
-    setSearchUrl("https://api.themoviedb.org/3/search/movie?api_key=68f7aed1b2f4271575d8bd561ee17fba&language=en-US&query="+enteredText+"&page=1&include_adult=false")
+    setSearchUrl("https://api.themoviedb.org/3/search/movie?api_key=68f7aed1b2f4271575d8bd561ee17fba&language=en-US&query=" + enteredText + "&page=1&include_adult=false")
   }
 
   //Search movies from API
   const searchMovies = () => {
     setShowMovies(true);
-}
+  }
 
-   useEffect(() => { 
-     //Fetch movies from the API and save them to state
-     fetch(searchUrl)
-     .then((res) => res.json())
-     .then((data) => setResult(data.results));
+  useEffect(() => {
+    //Fetch movies from the API and save them to state
+    fetch(searchUrl)
+      .then((res) => res.json())
+      .then((data) => setResult(data.results));
 
-   }, [searchUrl]);
+  }, [searchUrl]);
 
   console.log(result);
 
+  const toggle = () => {
+    props.navigation.toggleDrawer();
+  }
+
   return (
     <View style={styles.container}>
+      <View style={{ width: '100%', paddingTop: 20, paddingLeft: 20 }}>
+        <TouchableOpacity onPress={toggle}>
+          <Image source={require('../assets/hamburger-menu-icon.png')} style={{ width: 20, height: 20 }} />
+        </TouchableOpacity>
+      </View>
       <View style={styles.searchContainer}>
         <Text style={styles.textStyle}>Search</Text>
         <View style={styles.searchFieldContainer}>
-          <TextInput style={styles.searchField} placeholderTextColor="black" placeholder="Search a movie" onChangeText={input => textInputHandler(input)}/>
+          <TextInput style={styles.searchField} placeholderTextColor="black" placeholder="Search a movie" onChangeText={input => textInputHandler(input)} />
           <TouchableOpacity style={styles.buttonStyle} onPress={searchMovies}>
-            <Image source={require('../assets/magnifying-glass.png')} style={styles.image}/>
+            <Image source={require('../assets/magnifying-glass.png')} style={styles.image} />
           </TouchableOpacity>
         </View>
-      </View> 
-          { showMovies == true?
-            <FlatList
-              data={result}
-              renderItem={movie => (
-                <MoviePreview  key={keyValue++} name={movie.item.original_title} language={movie.item.original_language} releaseDate={movie.item.release_date} 
-                genre={movie.item.genre_ids} genre2={"category"} searchByGenre={false} image={{uri: 'https://image.tmdb.org/t/p/original' + movie.item.poster_path}} description={movie.item.overview}/>
-            )}/> 
-         :
-          <Text style={styles.searchStyle}>Search a movie...</Text>
-        }
-            
-        
+      </View>
+      {showMovies == true ?
+        <FlatList
+          data={result}
+          renderItem={movie => (
+            <MoviePreview key={keyValue++} name={movie.item.original_title} language={movie.item.original_language} releaseDate={movie.item.release_date}
+              genre={movie.item.genre_ids} genre2={"category"} searchByGenre={false} image={{ uri: 'https://image.tmdb.org/t/p/original' + movie.item.poster_path }} description={movie.item.overview} />
+          )} />
+        :
+        <Text style={styles.searchStyle}>Search a movie...</Text>
+      }
+
+
     </View>
   );
 }

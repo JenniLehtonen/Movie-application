@@ -4,7 +4,7 @@ import styles from '../styles/HomeScreenStyles';
 import { useNavigation } from '@react-navigation/native';
 import AppContext from '../components/AppContext';
 
-const HomeScreen = () => {
+const HomeScreen = (props) => {
   const myContext = useContext(AppContext);
   const [hasError, setErrors] = useState(false);
   const [someErrors, setSomeErrors] = useState('');
@@ -61,8 +61,17 @@ const HomeScreen = () => {
     }
   }, [searchUrl]);
 
+  const toggle = () => {
+    props.navigation.toggleDrawer();
+  }
+
   return (
     <View style={styles.container}>
+      <View style={{width:'100%', paddingTop:20, paddingLeft:20}}>
+      <TouchableOpacity onPress={toggle}>
+        <Image source={require('../assets/hamburger-menu-icon.png')} style={{ width: 20, height: 20 }} />
+      </TouchableOpacity>
+      </View>
       <Text style={styles.textStyle}>Welcome, {myContext.name}</Text>
       <Image style={{ marginBottom: 70, marginTop: 50 }} source={require('../assets/moviefy-logo.jpg')} />
 
