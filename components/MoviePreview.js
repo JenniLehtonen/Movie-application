@@ -22,8 +22,8 @@ const MoviePreview = (props) => {
   let movieTitle = props.name;
 
   //If the name is too long, make it shorter
-  if (movieTitle.length > 35) {
-    movieTitle = movieTitle.slice(0, 35) + "...";
+  if (movieTitle.length > 34) {
+    movieTitle = movieTitle.slice(0, 34) + "...";
   }
 
   let movieGenre;
@@ -163,7 +163,7 @@ const MoviePreview = (props) => {
           <Image source={props.image} style={styles.resultImage} />
         </View>
         <View style={styles.resultTextView}>
-          <View style={{ height: '60%', overflow: 'hidden' }}>
+          <View style={{ height: '60%', overflow: 'hidden', paddingRight: 5 }}>
             <Text style={styles.resultTitle}>{movieTitle}</Text>
           </View>
           <Text style={styles.resultDetails}>{capitalizedLanguage} | {release_date} | {movieGenre}</Text>

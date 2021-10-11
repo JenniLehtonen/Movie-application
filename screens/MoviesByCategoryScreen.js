@@ -3,10 +3,7 @@ import { View, Text, FlatList, ActivityIndicator, TouchableOpacity, Image } from
 import styles from '../styles/CategoryScreenStyle';
 import MoviePreview from '../components/MoviePreview';
 
-const MoviesByCategoryScreen = ({ route },props) => {
-
-  //For giving the key in the FlatList
-  let keyValue = 1;
+const MoviesByCategoryScreen = ({ route }, props) => {
 
   //For getting the information of the picked category
   const { id, category } = route.params;
@@ -43,7 +40,7 @@ const MoviesByCategoryScreen = ({ route },props) => {
   }
 
   return (
-    <View style={styles.container}>
+    <View style={styles.container2}>
       <View style={{ width: '100%', paddingTop: 20, paddingLeft: 20 }}>
         <TouchableOpacity onPress={toggle}>
           <Image source={require('../assets/hamburger-menu-icon.png')} style={{ width: 20, height: 20 }} />
@@ -54,14 +51,15 @@ const MoviesByCategoryScreen = ({ route },props) => {
         {loading == false ?
           <FlatList
             data={movies}
+            keyExtractor={item => item.id.toString()}
             renderItem={movie => (
-              <MoviePreview key={keyValue++} name={movie.item.original_title} language={movie.item.original_language} releaseDate={movie.item.release_date}
+              <MoviePreview name={movie.item.original_title} language={movie.item.original_language} releaseDate={movie.item.release_date}
                 genre={movie.item.genre_ids} genre2={category} searchByGenre={true} image={{ uri: 'https://image.tmdb.org/t/p/original/' + movie.item.poster_path }} description={movie.item.overview} />
             )} />
           :
           <>
             <Text style={styles.categoryTitle}>Searching for movies..</Text>
-            <ActivityIndicator size="large" color="white" animating={loading} />
+            <ActivityIndicator size="large" color="white" animating={loading} style={{marginTop: 20}}/>
           </>
         }
       </View>

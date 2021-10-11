@@ -14,11 +14,11 @@ export default StyleSheet.create({
       width: '80%'
     },
     attributionContainer: {
-      marginTop: 'auto'
+      marginTop: 3
     },
     //For ScrollView
     ScrollViewStyle: {
-      height: 155
+      height: 145
     },
     //For go back and add to list buttons
     buttonView: {

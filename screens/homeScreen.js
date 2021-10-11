@@ -9,8 +9,6 @@ const HomeScreen = (props) => {
   const [hasError, setErrors] = useState(false);
   const [someErrors, setSomeErrors] = useState('');
   const [isLoading, setLoading] = useState(true);
-  //For giving the key in the FlatList
-  let keyValue = 1;
 
   //For navigating to MoviesByCategoryScreen
   const navigation = useNavigation();
@@ -102,10 +100,11 @@ const HomeScreen = (props) => {
         <FlatList
           horizontal
           data={categories}
+          keyExtractor={item => item.id.toString()}
             renderItem={category => (
               <View style={styles.categoryItem}>
                 <ImageBackground source={require('../assets/genreBackground.jpg')} style={{flex:1, width:'100%', height:'100%'}} resizeMode="cover">
-                  <TouchableHighlight key={keyValue++} underlayColor="orange" style={styles.categoryItem} onPress={() => navigation.navigate('MoviesByCategoryScreen', {id:category.item.id, category:category.item.name})}>
+                  <TouchableHighlight underlayColor="orange" style={styles.categoryItem} onPress={() => navigation.navigate('MoviesByCategoryScreen', {id:category.item.id, category:category.item.name})}>
                     <View style={styles.categoryNameContainer}>
                       { category.item.name == "Science Fiction" ?
                         <Text style={{color: 'white', fontWeight: 'bold'}}>Sci-Fi</Text>
@@ -118,7 +117,6 @@ const HomeScreen = (props) => {
                 </ImageBackground>
               </View>
           )}
-          keyExtractor={item => item.id.toString()}
         />
       </View>
     </View>

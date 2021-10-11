@@ -25,7 +25,7 @@ const CategoryScreen = (props) => {
   }
 
   return (
-    <View style={styles.container}>
+    <View style={styles.container1}>
       <View style={{ width: '100%', paddingTop: 20, paddingLeft: 20 }}>
         <TouchableOpacity onPress={toggle}>
           <Image source={require('../assets/hamburger-menu-icon.png')} style={{ width: 20, height: 20 }} />
@@ -36,12 +36,20 @@ const CategoryScreen = (props) => {
         data={categories}
         renderItem={category => (
           <View style={styles.categoryBox}>
-            <Text style={styles.categoryTitle}>{category.item.name}</Text>
-            <TouchableOpacity style={styles.categoryButtonStyle} onPress={() => navigation.navigate('MoviesByCategoryScreen', { id: category.item.id, category: category.item.name })}>
-              <View style={{ backgroundColor: 'white', height: 25, width: 25, borderRadius: 100, justifyContent: 'center', alignItems: 'center' }}>
-                <Image source={require('../assets/play.png')} style={styles.categoryImageButton} />
-              </View>
-            </TouchableOpacity>
+            <View style={styles.textView}>
+              { category.item.name == "Science Fiction" ?
+                <Text style={styles.categoryTitle}>Sci-Fi</Text>
+                :
+                <Text style={styles.categoryTitle}>{category.item.name}</Text>
+              }
+            </View>
+            <View style={styles.buttonView}>
+              <TouchableOpacity style={styles.categoryButtonStyle} onPress={() => navigation.navigate('MoviesByCategoryScreen', { id: category.item.id, category: category.item.name })}>
+                <View style={{ backgroundColor: 'white', height: 25, width: 25, borderRadius: 100, justifyContent: 'center', alignItems: 'center' }}>
+                  <Image source={require('../assets/play.png')} style={styles.categoryImageButton} />
+                </View>
+              </TouchableOpacity>
+            </View>
           </View>
         )}
       />

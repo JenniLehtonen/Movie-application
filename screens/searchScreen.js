@@ -5,14 +5,11 @@ import MoviePreview from '../components/MoviePreview';
 
 const SearchScreen = (props) => {
 
-  //For giving the key in the FlatList
-  let keyValue = 1;
-
   //API search result
   const [result, setResult] = useState();
 
-  //For holding the API search URL with the user search input
-  const [searchUrl, setSearchUrl] = useState("https://api.themoviedb.org");
+  //For holding the API search URL with the user search input. Here we need to set some default query first.
+  const [searchUrl, setSearchUrl] = useState("https://api.themoviedb.org/3/search/movie?api_key=68f7aed1b2f4271575d8bd561ee17fba&language=en-US&query=movie&page=1&include_adult=false");
 
   //For showing the movies if the user has clicked search button
   const [showMovies, setShowMovies] = useState(false);
@@ -65,8 +62,9 @@ const SearchScreen = (props) => {
       {showMovies == true ?
         <FlatList
           data={result}
+          keyExtractor={item => item.id.toString()}
           renderItem={movie => (
-            <MoviePreview key={keyValue++} name={movie.item.original_title} language={movie.item.original_language} releaseDate={movie.item.release_date}
+            <MoviePreview name={movie.item.original_title} language={movie.item.original_language} releaseDate={movie.item.release_date}
               genre={movie.item.genre_ids} genre2={"category"} searchByGenre={false} image={{ uri: 'https://image.tmdb.org/t/p/original' + movie.item.poster_path }} description={movie.item.overview} />
           )} />
         :
