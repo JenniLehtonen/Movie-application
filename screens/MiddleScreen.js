@@ -8,7 +8,9 @@ export default function MiddleScreen(props) {
 
   useEffect(() => {
     if (myContext.isLoggedIn) {
-      props.navigation.navigate("Home page");
+      setTimeout(() => {
+        props.navigation.navigate("Home page");
+      }, 2000);
     } else {
       props.navigation.navigate("Login");
     }

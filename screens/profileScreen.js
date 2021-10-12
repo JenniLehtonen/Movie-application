@@ -1,13 +1,16 @@
 import React, { useContext } from 'react';
 import { View, Text, StyleSheet, TouchableOpacity, Alert, Image } from 'react-native';
+import { useNavigation } from '@react-navigation/native';
+
 
 import AppContext from '../components/AppContext';
 
 export default function ProfileScreen(props) {
   const myContext = useContext(AppContext);
+  const navigation = useNavigation();
 
   const goToList = (props) => {
-    props.navigation.navigate("My List");
+    navigation.navigate("My List");
   }
 
   async function removeUser() {

@@ -1,8 +1,10 @@
-import React, {useState} from 'react';
-import {View, Text, TouchableOpacity, Image, ScrollView} from 'react-native';
+import React, {useState, useContext} from 'react';
+import {View, Text, TouchableOpacity, Image, ScrollView, Alert} from 'react-native';
 import { useNavigation } from '@react-navigation/native';
 import Svg, { Path } from "react-native-svg"
 import styles from '../styles/DetailScreenStyle';
+import AppContext from '../components/AppContext';
+
 
 const DetailScreen = ({route}, props) => {
   const [movieList, setMovieList] = useState([]);
@@ -19,9 +21,7 @@ const DetailScreen = ({route}, props) => {
   const {description} = route.params;
   const {searchByGenre} = route.params;
 
-  const toggle = () => {
-    props.navigation.toggleDrawer();
-  }
+  const myContext = useContext(AppContext);
 
   async function addToMylist() {
     // console.log("Name: " + movieTitle);
@@ -34,8 +34,8 @@ const DetailScreen = ({route}, props) => {
 
     const json = JSON.stringify({
       name: props.name,
-      image: props.image.uri,
-      language: capitalizedLanguage,
+      image: props.image,
+      language: props.language,
       description: props.description,
       user: myContext.name
     });
@@ -51,8 +51,8 @@ const DetailScreen = ({route}, props) => {
         },
         body: JSON.stringify({
           name: props.name,
-          image: props.image.uri,
-          language: capitalizedLanguage,
+          image: props.image,
+          language: props.language,
           description: props.description,
           user: myContext.name
         })
@@ -61,7 +61,7 @@ const DetailScreen = ({route}, props) => {
     const responseData = await response.json();
     console.log(responseData);
 
-    setMovieList(movieList => [...movieList, responseData]);
+    setMovieList(movieList => [...movieList, json]);
     if (responseData.result == true) {
       Alert.alert(
         "Success",
@@ -84,11 +84,6 @@ const DetailScreen = ({route}, props) => {
 
     return(
       <View style={styles.container}>
-        <View style={{width:'100%', paddingTop:20, paddingLeft:20}}>
-        <TouchableOpacity onPress={toggle}>
-          <Image source={require('../assets/hamburger-menu-icon.png')} style={{ width: 20, height: 20 }} />
-        </TouchableOpacity>
-        </View>
         <View style={styles.buttonView}>
           <View style={styles.goBackBtnView}>
             {

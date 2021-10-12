@@ -97,6 +97,8 @@ const MoviePreview = (props) => {
     }
   }
 
+  let release_date2 = release_date.toString();
+
   async function addToMylist() {
     // console.log("Name: " + movieTitle);
     // console.log("Image: " + props.image.uri);
@@ -110,6 +112,8 @@ const MoviePreview = (props) => {
       name: props.name,
       image: props.image.uri,
       language: capitalizedLanguage,
+      releaseDate: release_date2,
+      genre: movieGenre,
       description: props.description,
       user: myContext.name
     });
@@ -126,6 +130,8 @@ const MoviePreview = (props) => {
           name: props.name,
           image: props.image.uri,
           language: capitalizedLanguage,
+          releaseDate: release_date2,
+          genre: movieGenre,
           description: props.description,
           user: myContext.name
         })
@@ -134,7 +140,7 @@ const MoviePreview = (props) => {
     const responseData = await response.json();
     console.log(responseData);
 
-    setMovieList(movieList => [...movieList, responseData]);
+    setMovieList(movieList => [...movieList, json]);
     if (responseData.result == true) {
       Alert.alert(
         "Success",

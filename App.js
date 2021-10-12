@@ -2,6 +2,7 @@ import React, { useState } from 'react';
 import { createDrawerNavigator } from '@react-navigation/drawer';
 import { NavigationContainer } from '@react-navigation/native';
 
+
 import AppContext from './components/AppContext';
 
 import HomeScreen from './screens/HomeScreen';
@@ -52,16 +53,16 @@ export default function App() {
               {props => <SearchScreen {...props} />}
             </Drawer.Screen>
 
-            <Drawer.Screen name="Profile" options={{ headerShown: false }}>
-              {props => <ProfileScreen {...props} />}
+            <Drawer.Screen name="Categories" options={{ headerShown: false }}>
+              {props => <CategoryScreen {...props} />}
             </Drawer.Screen>
 
             <Drawer.Screen name="My List" options={{ headerShown: false }}>
               {props => <MylistScreen {...props} />}
             </Drawer.Screen>
 
-            <Drawer.Screen name="Categories" options={{ headerShown: false }}>
-              {props => <CategoryScreen {...props} />}
+            <Drawer.Screen name="Profile" options={{ headerShown: false }}>
+              {props => <ProfileScreen {...props} />}
             </Drawer.Screen>
 
             <Drawer.Screen name="Logout" options={{ headerShown: false }}>

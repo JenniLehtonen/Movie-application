@@ -1,5 +1,5 @@
-import React, { useState, useContext } from 'react';
-import { View, Text, StyleSheet, TextInput, TouchableOpacity, Alert } from 'react-native';
+import React, { useState, useContext, useEffect } from 'react';
+import { View, Text, StyleSheet, TextInput, TouchableOpacity, Alert, Image } from 'react-native';
 
 import AppContext from '../components/AppContext';
 
@@ -11,16 +11,17 @@ export default function LogoutScreen(props) {
         props.navigation.navigate("Middle");
     }
 
+
+    useEffect(() => {
+        logout();
+      });
+
     return (
-
         <View style={styles.screen}>
-            <View style={styles.screen2}>
-                <TouchableOpacity activeOpacity={0.8} style={styles.button} onPress={logout}>
-                    <Text style={styles.buttonText}>Log out</Text>
-                </TouchableOpacity>
-            </View>
-        </View>
-
+      <View style={styles.screen2}>
+        <Image source={require('../assets/moviefy-logo.jpg')} />
+      </View>
+    </View >
     );
 
 }

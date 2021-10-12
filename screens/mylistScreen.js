@@ -1,6 +1,4 @@
 import { View, Text, TextInput, TouchableOpacity, Image, Button, ScrollView, FlatList, Alert, ActivityIndicator, StyleSheet } from 'react-native';
-
-import MoviePreview from '../components/MoviePreview';
 import React, { useState, useEffect, useContext } from 'react';
 import styles from '../styles/SearchScreenStyle';
 
