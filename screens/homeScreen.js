@@ -1,5 +1,5 @@
 import React, { useContext, useState, useEffect } from 'react';
-import { View, Text, FlatList, Image, TouchableOpacity, TouchableHighlight, ImageBackground } from 'react-native';
+import { View, Text, FlatList, Image, TouchableOpacity, TouchableHighlight, ImageBackground, StatusBar } from 'react-native';
 import styles from '../styles/HomeScreenStyles';
 import { useNavigation } from '@react-navigation/native';
 import AppContext from '../components/AppContext';
@@ -65,29 +65,31 @@ const HomeScreen = (props) => {
 
   return (
     <View style={styles.container}>
-      <View style={{width:'100%'}}>
-      <TouchableOpacity onPress={toggle}>
-        <Image source={require('../assets/hamburger-menu-icon.png')} style={{ width: 20, height: 20 }} />
-      </TouchableOpacity>
+      <View style={{ width: '100%' }}>
+        <TouchableOpacity onPress={toggle}>
+          <Image source={require('../assets/hamburger-menu-icon.png')} style={{ width: 20, height: 20 }} />
+        </TouchableOpacity>
       </View>
       <Text style={styles.textStyle}>Welcome, {myContext.name}</Text>
       <Image style={{ marginBottom: 70, marginTop: 50 }} source={require('../assets/moviefy-logo.jpg')} />
 
       <View style={{ width: '100%', marginBottom: 20 }}>
-        <View style={{flexDirection:'row'}}>
-        <TouchableOpacity onPress={goToMyList}>
-          <Text style={styles.headers}>Your list</Text>
-        </TouchableOpacity>
-        <TouchableOpacity activeOpacity={0.8} style={styles.button} onPress={fetchData}>
-          <Text style={styles.buttonText}>Reload</Text>
-        </TouchableOpacity>
+        <View style={{ flexDirection: 'row' }}>
+          <TouchableOpacity onPress={goToMyList}>
+            <Text style={styles.headers}>Your list</Text>
+          </TouchableOpacity>
+          <TouchableOpacity activeOpacity={0.8} style={styles.button} onPress={fetchData}>
+            <Text style={styles.buttonText}>Reload</Text>
+          </TouchableOpacity>
         </View>
         {mylist ?
           <FlatList
             horizontal
             data={mylist}
             renderItem={({ item }) => (
+              <TouchableOpacity onPress={() => navigation.navigate('DetailScreen', { name: item.name, image: item.image, language: item.language, releaseDate: item.releaseDate, genre: item.genre, description: item.description, searchByGenre: true })}>
                 <Image source={{ uri: item.image }} style={styles.resultImage} />
+              </TouchableOpacity>
             )}
             keyExtractor={item => item.id.toString()}
           />
@@ -100,23 +102,23 @@ const HomeScreen = (props) => {
         <FlatList
           horizontal
           data={categories}
-          keyExtractor={item => item.id.toString()}
-            renderItem={category => (
-              <View style={styles.categoryItem}>
-                <ImageBackground source={require('../assets/genreBackground.jpg')} style={{flex:1, width:'100%', height:'100%'}} resizeMode="cover">
-                  <TouchableHighlight underlayColor="orange" style={styles.categoryItem} onPress={() => navigation.navigate('MoviesByCategoryScreen', {id:category.item.id, category:category.item.name})}>
-                    <View style={styles.categoryNameContainer}>
-                      { category.item.name == "Science Fiction" ?
-                        <Text style={{color: 'white', fontWeight: 'bold'}}>Sci-Fi</Text>
-                        :
-                        <Text style={{color: 'white', fontWeight: 'bold'}}>{category.item.name}</Text>
-                      }
-                      
-                    </View>
-                  </TouchableHighlight> 
-                </ImageBackground>
-              </View>
+          renderItem={category => (
+            <View style={styles.categoryItem}>
+              <ImageBackground source={require('../assets/genreBackground.jpg')} style={{ flex: 1, width: '100%', height: '100%' }} resizeMode="cover">
+                <TouchableHighlight underlayColor="orange" style={styles.categoryItem} onPress={() => navigation.navigate('MoviesByCategoryScreen', { id: category.item.id, category: category.item.name })}>
+                  <View style={styles.categoryNameContainer}>
+                    {category.item.name == "Science Fiction" ?
+                      <Text style={{ color: 'white', fontWeight: 'bold' }}>Sci-Fi</Text>
+                      :
+                      <Text style={{ color: 'white', fontWeight: 'bold' }}>{category.item.name}</Text>
+                    }
+
+                  </View>
+                </TouchableHighlight>
+              </ImageBackground>
+            </View>
           )}
+          keyExtractor={item => item.id.toString()}
         />
       </View>
     </View>

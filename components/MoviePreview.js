@@ -110,7 +110,7 @@ const MoviePreview = (props) => {
 
     const json = JSON.stringify({
       name: props.name,
-      image: props.image.uri,
+      image: props.image,
       language: capitalizedLanguage,
       releaseDate: release_date2,
       genre: movieGenre,
@@ -128,7 +128,7 @@ const MoviePreview = (props) => {
         },
         body: JSON.stringify({
           name: props.name,
-          image: props.image.uri,
+          image: props.image,
           language: capitalizedLanguage,
           releaseDate: release_date2,
           genre: movieGenre,
@@ -166,7 +166,7 @@ const MoviePreview = (props) => {
     <View style={styles.resultContainer}>
       <View style={styles.resultBox}>
         <View style={styles.resultImageView}>
-          <Image source={props.image} style={styles.resultImage} />
+          <Image source={{uri: props.image}} style={styles.resultImage} />
         </View>
         <View style={styles.resultTextView}>
           <View style={{ height: '60%', overflow: 'hidden', paddingRight: 5 }}>

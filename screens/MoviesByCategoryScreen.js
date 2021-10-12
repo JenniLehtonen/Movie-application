@@ -2,6 +2,9 @@ import React, { useState, useEffect } from 'react';
 import { View, Text, FlatList, ActivityIndicator, TouchableOpacity, Image } from 'react-native';
 import styles from '../styles/CategoryScreenStyle';
 import MoviePreview from '../components/MoviePreview';
+import { useNavigation } from '@react-navigation/native';
+
+
 
 const MoviesByCategoryScreen = ({ route }, props) => {
 
@@ -13,6 +16,9 @@ const MoviesByCategoryScreen = ({ route }, props) => {
 
   //API search result
   const [movies, setMovies] = useState();
+
+  const navigation = useNavigation();
+
 
 
   const searchUrl = "https://api.themoviedb.org/3/discover/movie?api_key=e25210b6bbfca7fe71b09ec050cd892b&language=en-US&sort_by=popularity.desc&include_adult=false&include_video=false&page=1&with_genres=" + id;
@@ -36,7 +42,7 @@ const MoviesByCategoryScreen = ({ route }, props) => {
   }, [searchUrl]);
 
   const toggle = () => {
-    props.navigation.toggleDrawer();
+    navigation.toggleDrawer();
   }
 
   return (
@@ -54,7 +60,7 @@ const MoviesByCategoryScreen = ({ route }, props) => {
             keyExtractor={item => item.id.toString()}
             renderItem={movie => (
               <MoviePreview name={movie.item.original_title} language={movie.item.original_language} releaseDate={movie.item.release_date}
-                genre={movie.item.genre_ids} genre2={category} searchByGenre={true} image={{ uri: 'https://image.tmdb.org/t/p/original/' + movie.item.poster_path }} description={movie.item.overview} />
+                genre={movie.item.genre_ids} genre2={category} searchByGenre={true} image={'https://image.tmdb.org/t/p/original/' + movie.item.poster_path } description={movie.item.overview} />
             )} />
           :
           <>

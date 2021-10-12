@@ -9,7 +9,7 @@ export default function ProfileScreen(props) {
   const myContext = useContext(AppContext);
   const navigation = useNavigation();
 
-  const goToList = (props) => {
+  const goToList = () => {
     navigation.navigate("My List");
   }
 

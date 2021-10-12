@@ -136,15 +136,7 @@ const MylistScreen = (props) => {
     );
   }
 };
-/*const styles=StyleSheet.create({
-  container:{
-    padding: 10,
-    marginVertical: 10,
-    borderWidth: 2,
-    borderColor: '#0f0',
-    backgroundColor: '#fce',    
-  }
-});*/
+
 
 
 

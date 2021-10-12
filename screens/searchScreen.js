@@ -65,7 +65,7 @@ const SearchScreen = (props) => {
           keyExtractor={item => item.id.toString()}
           renderItem={movie => (
             <MoviePreview name={movie.item.original_title} language={movie.item.original_language} releaseDate={movie.item.release_date}
-              genre={movie.item.genre_ids} genre2={"category"} searchByGenre={false} image={{ uri: 'https://image.tmdb.org/t/p/original' + movie.item.poster_path }} description={movie.item.overview} />
+              genre={movie.item.genre_ids} genre2={"category"} searchByGenre={false} image= {'https://image.tmdb.org/t/p/original' + movie.item.poster_path} description={movie.item.overview} />
           )} />
         :
         <Text style={styles.searchStyle}>Search a movie...</Text>

@@ -23,6 +23,8 @@ const DetailScreen = ({route}, props) => {
 
   const myContext = useContext(AppContext);
 
+  let release_date2 = releaseDate.toString();
+
   async function addToMylist() {
     // console.log("Name: " + movieTitle);
     // console.log("Image: " + props.image.uri);
@@ -33,10 +35,12 @@ const DetailScreen = ({route}, props) => {
     // console.log("User: " + myContext.name);
 
     const json = JSON.stringify({
-      name: props.name,
-      image: props.image,
-      language: props.language,
-      description: props.description,
+      name: name,
+      image: image,
+      language: language,
+      releaseDate: release_date2,
+      genre: genre,
+      description: description,
       user: myContext.name
     });
 
@@ -50,10 +54,12 @@ const DetailScreen = ({route}, props) => {
           'Content-Type': 'application/json'
         },
         body: JSON.stringify({
-          name: props.name,
-          image: props.image,
-          language: props.language,
-          description: props.description,
+          name: name,
+          image: image,
+          language: language,
+          releaseDate: release_date2,
+          genre: genre,
+          description: description,
           user: myContext.name
         })
       });
@@ -65,7 +71,7 @@ const DetailScreen = ({route}, props) => {
     if (responseData.result == true) {
       Alert.alert(
         "Success",
-        props.name + " has been added to your list.",
+        name + " has been added to your list.",
         [
           { text: "OK" }
         ]
@@ -104,7 +110,7 @@ const DetailScreen = ({route}, props) => {
           </View>
         </View>
         <View style={styles.textContentStyle}>
-          <Image source={image} style={styles.Image}/>
+          <Image source={{uri: image}} style={styles.Image}/>
           <Text style={styles.titleStyle}>{name}</Text>
           <Text style={styles.detailsStyle}>{language} | {releaseDate} | {genre}</Text>
           <View style={styles.borderstyle}></View>
