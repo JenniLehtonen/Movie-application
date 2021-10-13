@@ -90,7 +90,7 @@ const MylistScreen = (props) => {
           </TouchableOpacity>
         </View>
         <Text>{hasError}</Text>
-        <Text style={styles.textStyle}>My list</Text>
+        <Text style={styles.textStyle}>{myContext.name}'s list</Text>
 
         <TouchableOpacity activeOpacity={0.8} style={styles.button} onPress={fetchData}>
           <Text style={styles.buttonText}>Reload list</Text>

@@ -5,8 +5,8 @@ export default StyleSheet.create({
         flex: 1,
         backgroundColor: '#1F1C2C',
         paddingTop: 20,
-        paddingBottom: 50,
-        alignItems: 'center'
+        paddingBottom:20,
+        alignItems: 'center',
       },
       container2: {
         flex: 1,
