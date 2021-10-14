@@ -8,12 +8,27 @@ You can go to watch a video of the application [here](https://jennilehtonen.gith
 |Table of contents|
 |:------------- |
 |1. [Technical solutions of the application](#Technical-solutions-of-the-application)|
-|2. [Attribution](#Attribution)|
+|2. [Images of the UI](#Images-of-the-UI)|
+|3. [Attribution](#Attribution)|
 
 ## Technical solutions of the application
 Used technologies: **HTML, CSS, JavaScript, React Native and Java**
 
 This project had a backend solution coded with **Java** and it was deployed to the **Google Cloud** where we also had a **MySQL database**. Otherwise the application was made by using **HTML, CSS, JavaScript and React Native**.
+
+## Images of the UI
+Here you can see a few images of the UI. You can also watch a video of the UI [here](https://jennilehtonen.github.io/Movie-application/video.html).
+
+<img src="image1.png" width="30%" height="30%"> <img src="image2.png" width="30%" height="30%">
+
+<img src="image3.png" width="30%" height="30%"> <img src="image4.png" width="30%" height="30%">
+
+<img src="image5.png" width="30%" height="30%"> <img src="image6.png" width="30%" height="30%">
+
+<img src="image7.png" width="30%" height="30%"> <img src="image8.png" width="30%" height="30%">
+
+<img src="image9.png" width="30%" height="30%"> <img src="image10.png" width="30%" height="30%">
+
 
 ## Attribution
 The movies are fetched from TMDB. 
