@@ -1,9 +1,21 @@
 # Movie-application
-In this application the user will be able to search movies by title or by category. The movies are fetched from TMDB. 
-We are currently working on with this project so it is not ready yet.
 
-This application uses icons made by <a href="https://www.freepik.com" title="Freepik">Freepik</a> from <a href="https://www.flaticon.com/" title="Flaticon">www.flaticon.com</a>.
+In this application the user can search for movies by title or by category and save them to their list.
+During this project we used **scrum** to manage the tasks: we had a product backlog, sprint backlogs, sprint planning meetings, sprint reviews and daily scrum meetings.
 
-<a href='https://www.freepik.com/vectors/background'>Background vector created by vector_corp - www.freepik.com</a>.
+You can go to watch a video of the application [here](https://jennilehtonen.github.io/Movie-application/video.html).
 
-The hamburger menu icon is from <a href="https://png.is/f/call-610-465-white-hamburger-menu-icon-png/m2i8G6G6b1m2A0G6-201907232310.html">png.is</a>
+|Table of contents|
+|:------------- |
+|1. [Technical solutions of the application](#Technical-solutions-of-the-application)|
+|2. [Attribution](#Attribution)|
+
+## Technical solutions of the application
+Used technologies: **HTML, CSS, JavaScript, React Native and Java**
+
+This project had a backend solution coded with **Java** and it was deployed to the **Google Cloud** where we also had a **MySQL database**. Otherwise the application was made by using **HTML, CSS, JavaScript and React Native**.
+
+## Attribution
+The movies are fetched from TMDB. 
+
+This application uses icons made by <a href="https://www.freepik.com" title="Freepik">Freepik</a> from <a href="https://www.flaticon.com/" title="Flaticon">www.flaticon.com</a> and <a href='https://www.freepik.com/vectors/background'>Background vector created by vector_corp - www.freepik.com</a>. The hamburger menu icon is from <a href="https://png.is/f/call-610-465-white-hamburger-menu-icon-png/m2i8G6G6b1m2A0G6-201907232310.html">png.is</a>
