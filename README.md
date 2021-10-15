@@ -1,4 +1,4 @@
-# Movie-application
+# Movie-application (Moviefy)
 
 In this application the user can search for movies by title or by category and save them to their list.
 During this project we used **scrum** to manage the tasks: we had a product backlog, sprint backlogs, sprint planning meetings, sprint reviews and daily scrum meetings.
